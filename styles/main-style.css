@@ -365,3 +365,56 @@
   font-size: 18px;
   line-height: 26.1px;
 }
+
+.relative-address {
+  position: absolute;
+  top: 11vh;
+  color: #797979;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Montserrat";
+}
+
+.relative-address--current {
+  color: #000;
+}
+
+.animal-name-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.animal-content {
+  margin-top: 4vh;
+}
+
+.animal-breed__image {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.animal-breed-text__block {
+  height: 1000px;
+  margin: 7vh 12vw;
+}
+
+.animal-breed--subtittle {
+  font-family: Source Sans Pro;
+  font-size: 37px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 46px;
+}
+
+.animal-breed--navigation {
+  list-style-image: url(/icons/dot.svg);
+  padding: 10px 0 40px 20px;
+}
+
+.animal-breed--navigation li {
+  font-family: "Montserrat";
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: 400;
+}

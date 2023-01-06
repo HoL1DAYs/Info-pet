@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Breed</title>
+    <link rel="stylesheet" href="styles/main-style.css" />
+    <link rel="stylesheet" href="styles/black-header.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@400;500&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="animal__content__block">
+      <!-- HEADER WITH NAVIGATION-->
+      <header class="header">
+        <div class="logo">
+          <img src="icons/logo.svg" alt="logo" />
+          <span class="logo__text">Info-pet</span>
+        </div>
+        <nav>
+          <ul class="nav__links">
+            <li><a href="#">Кошки</a></li>
+            <li><a href="#">Собаки</a></li>
+            <li><a href="#">Водный мир</a></li>
+            <li><a href="#">Птицы</a></li>
+            <li><a href="#">Грызуны</a></li>
+            <li><a href="#">Рептилии</a></li>
+            <li><a href="#">Другие питомцы</a></li>
+          </ul>
+        </nav>
+        <input class="search" placeholder="Поиск по сайту" />
+      </header>
+
+      <!-- BLOCK WITH RELATIVE ADDRESS-->
+      <div class="relative-address__block">
+        <p class="relative-address">
+          Главная / Собаки /
+          <span class="relative-address--current">Бульдог</span>
+        </p>
+      </div>
+
+      <!-- BLOCK WITH BREED NAME AND FILTERS-->
+      <div class="animal-name-filters">
+        <h1 class="animal__name">Бульдог</h1>
+        <div class="animal-name--filters">
+          <button class="animal-card__filters__btn">Умные</button>
+          <button class="animal-card__filters__btn">Повадыри</button>
+          <button class="animal-card__filters__btn">Бойцовские</button>
+        </div>
+      </div>
+
+      <section class="animal-content">
+        <img class="animal-breed__image" src="img/pets/02.jpg" />
+
+        <div class="animal-breed-text__block">
+          <h2 class="animal-breed--subtittle">Содержание:</h2>
+          <ul class="animal-breed--navigation">
+            <li>Краткая информация</li>
+            <li>Характер</li>
+            <li>Воспитание</li>
+            <li>Питание</li>
+            <li>Уход</li>
+            <li>Фотографии</li>
+          </ul>
+          <h2 class="animal-breed--subtittle">Краткая информация</h2>
+
+          <h2 class="animal-breed--subtittle">Характер</h2>
+          <h2 class="animal-breed--subtittle">Воспитание</h2>
+          <h2 class="animal-breed--subtittle">Питание</h2>
+          <h2 class="animal-breed--subtittle">Уход</h2>
+          <h2 class="animal-breed--subtittle">Фотографии</h2>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
