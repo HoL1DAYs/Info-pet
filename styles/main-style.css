@@ -395,7 +395,6 @@
 }
 
 .animal-breed-text__block {
-  height: 1000px;
   margin: 7vh 12vw;
 }
 
@@ -417,4 +416,56 @@
   font-size: 16px;
   line-height: 40px;
   font-weight: 400;
+}
+
+.animal-breed__table--short-info {
+  margin-top: 16px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.table--attribute {
+  font-family: Source Sans Pro;
+  font-size: 17px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.table--value {
+  line-height: 26px;
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.animal-breed--about {
+  margin-top: 16px;
+  margin-bottom: 40px;
+  font-family: "Montserrat";
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.animal-breed--photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.photo-gallery--element {
+  object-fit: cover;
+  width: 100%;
+  height: 240px;
+}
+
+.subtittle--margin {
+  margin: 40px 12vw 25px;
+}
+
+.animal-breed__grid--recomendation {
+  display: grid;
+  margin-bottom: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+  gap: 20px;
 }
