@@ -14,7 +14,7 @@ export class MainPageComponent implements OnInit {
 
   }
 
-  onScroll(){
+  onScrollTop(){
     window.scroll({
       top: 0,
       left: 0,

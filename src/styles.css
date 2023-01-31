@@ -533,6 +533,7 @@
   font-size: 16px;
   line-height: 40px;
   font-weight: 400;
+  width: fit-content;
 }
 
 .animal-breed__table--short-info {
@@ -595,6 +596,11 @@
   margin-bottom: 40px;
   grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   gap: 20px;
+}
+
+.animal-breed--navigation li:hover {
+  color: #006e07;
+  text-decoration: underline;
 }
 
 

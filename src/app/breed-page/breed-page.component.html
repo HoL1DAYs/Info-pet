@@ -45,12 +45,12 @@
     <div class="animal-breed-text__block">
       <h2 class="animal-breed--subtittle">Содержание:</h2>
       <ul class="animal-breed--navigation">
-        <li>Краткая информация</li>
-        <li>Характер</li>
-        <li>Воспитание</li>
-        <li>Питание</li>
-        <li>Уход</li>
-        <li>Фотографии</li>
+        <li (click)="onScroll($event)">Краткая информация</li>
+        <li (click)="onScroll($event)">Характер</li>
+        <li (click)="onScroll($event)">Воспитание</li>
+        <li (click)="onScroll($event)">Питание</li>
+        <li (click)="onScroll($event)">Уход</li>
+        <li (click)="onScroll($event)">Фотографии</li>
       </ul>
       <h2 class="animal-breed--subtittle">Краткая информация</h2>
       <table class="animal-breed__table--short-info">
@@ -289,5 +289,10 @@
     </ul>
   </div>
 </footer>
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red">
+    <i class="up"></i>
+  </a>
+</div>
 </body>
 
