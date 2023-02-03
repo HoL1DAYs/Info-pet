@@ -1,0 +1,312 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Spring Doc",
+    "description": "Spring doc",
+    "contact": {
+      "name": "Kirill Yadevich",
+      "email": "kilril2101@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Котроллер для животных",
+      "description": "Позволяет получить название, фильтры и их id"
+    }
+  ],
+  "paths": {
+    "/api/v1/breeds/{id}": {
+      "get": {
+        "tags": [
+          "Котроллер для парод"
+        ],
+        "summary": "Получить список карточек всех животных вида = id",
+        "operationId": "hello",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID животного",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Номер страницы пагинации начиная c 0",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "0"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Количество элементов на странице",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "12"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageListBreed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/breeds/breed/{id}": {
+      "get": {
+        "tags": [
+          "Котроллер для парод"
+        ],
+        "summary": "Получить подробное описание канкретной пароды",
+        "operationId": "getBreedById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID пароды",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Breed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/animal/{id}": {
+      "get": {
+        "tags": [
+          "Котроллер для животных"
+        ],
+        "operationId": "getAnimal",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id животного",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Animal"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Animal": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "filters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Filter"
+            }
+          },
+          "animal": {
+            "type": "string"
+          }
+        }
+      },
+      "Breed": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "animal": {
+            "$ref": "#/components/schemas/Animal"
+          },
+          "imgUrl": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "parameters": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Parameters"
+            }
+          },
+          "filters": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Filter"
+            }
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "character": {
+            "type": "string"
+          },
+          "training": {
+            "type": "string"
+          },
+          "diet": {
+            "type": "string"
+          },
+          "care": {
+            "type": "string"
+          },
+          "packageUrl": {
+            "type": "string"
+          }
+        }
+      },
+      "Filter": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "filter": {
+            "type": "string"
+          }
+        }
+      },
+      "PageListBreed": {
+        "type": "object",
+        "properties": {
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Breed"
+              }
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PageableObject": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paged": {
+            "type": "boolean"
+          },
+          "unpaged": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "parameter": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

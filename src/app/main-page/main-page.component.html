@@ -1,0 +1,152 @@
+<body>
+<header class="header">
+  <div class="logo">
+    <img src="assets/icons/logo.svg" alt="logo" />
+    <span class="logo__text" routerLink="/main-page">Info-pet</span>
+  </div>
+  <nav>
+    <ul class="nav__links">
+      <li><a routerLink="/animal-page/cats/1" routerLinkActive="active-link">Кошки</a></li>
+      <li><a routerLink="/animal-page/dogs/1" routerLinkActive="active-link">Собаки</a></li>
+      <li><a routerLink="/animal-page/fish/1" routerLinkActive="active-link">Водный мир</a></li>
+      <li><a routerLink="/animal-page/birds/1" routerLinkActive="active-link">Птицы</a></li>
+      <li><a routerLink="/animal-page/rodents/1" routerLinkActive="active-link">Грызуны</a></li>
+      <li><a routerLink="/animal-page/reptiles/1" routerLinkActive="active-link">Рептилии</a></li>
+      <li><a routerLink="/animal-page/others/1" routerLinkActive="active-link">Другие питомцы</a></li>
+    </ul>
+  </nav>
+  <input class="search" placeholder="Поиск по сайту" [(ngModel)]="data"/>
+</header>
+<!-- SECTION TITLE -->
+<section class="section__title">
+  <div class="section__title__block">
+    <h1 class="title__header-up">Всё о домашних животных</h1>
+    <h2 class="title-header-down">
+      Какие бы не были наши питомцы, они - самые любимые
+    </h2>
+  </div>
+  <img class="under" src="assets/icons/under.svg" alt="under" />
+</section>
+
+<!-- SECTION TEXT ABOUT SITE -->
+<section class="title-about-site">
+  Этот информационный портал о домашних животных. Здесь вы можете найти лю
+  Этот информационный портал о домашних животных. Здесь вы можете найти лю
+  Этот информационный портал о домашних животных. Здесь вы можете найти лю
+  Этот информационный портал о домашних животных. Здесь вы можете найти лю
+  Этот информационный портал о домашних животных. Здесь вы можете найти лю
+  Этот информационный портал о домашних животных. Здесь вы можете найти лю
+</section>
+
+<!-- SECTION ABOUT ANIMAL'S -->
+<section class="section-animals-preview">
+  <div class="animals-preview__grid">
+    <div class="animal-preview__card">
+      <h2 class="animal__card--name">О собаках</h2>
+      <span class="animal__card--subtitle"
+      >Этот информационный портла предназначен дляЭтот информационный
+            портла предназначен дляЭтот информационный портла предназначен дл
+          </span>
+      <button class="animal__card__btn--more" routerLink="/animal-page/dogs" routerLinkActive="active-link" (click)="onScrollTop()">Подробнее</button>
+    </div>
+    <img class="animal__card__image scale" src="assets/img/dog.jpg" />
+    <img class="animal__card__image scale" src="assets/img/cat.jpg" />
+    <div class="animal-preview__card">
+      <h2 class="animal__card--name">О кошках</h2>
+      <span class="animal__card--subtitle"
+      >Этот информационный портла предназначен дляЭтот информационный
+            портла предназначен дляЭтот информационный портла предназначен дл
+          </span>
+      <button class="animal__card__btn--more" routerLink="/animal-page/cats" routerLinkActive="active-link" (click)="onScrollTop()">Подробнее</button>
+    </div>
+
+    <div class="animal-preview__card">
+      <h2 class="animal__card--name">О водном мире</h2>
+      <span class="animal__card--subtitle"
+      >Этот информационный портла предназначен дляЭтот информационный
+            портла предназначен дляЭтот информационный портла предназначен дл
+          </span>
+      <button class="animal__card__btn--more" routerLink="/animal-page/fish" routerLinkActive="active-link" (click)="onScrollTop()">Подробнее</button>
+    </div>
+    <img class="animal__card__image" src="assets/img/fish.jpg" />
+
+    <img class="animal__card__image" src="assets/img/bird.jpg" />
+    <div class="animal-preview__card">
+      <h2 class="animal__card--name">О птицах</h2>
+      <span class="animal__card--subtitle"
+      >Этот информационный портла предназначен дляЭтот информационный
+            портла предназначен дляЭтот информационный портла предназначен дл
+          </span>
+      <button class="animal__card__btn--more" routerLink="/animal-page/birds" routerLinkActive="active-link" (click)="onScrollTop()">Подробнее</button>
+    </div>
+
+    <div class="animal-preview__card">
+      <h2 class="animal__card--name">О грызунах</h2>
+      <span class="animal__card--subtitle"
+      >Этот информационный портла предназначен дляЭтот информационный
+            портла предназначен дляЭтот информационный портла предназначен дл
+          </span>
+      <button class="animal__card__btn--more" routerLink="/animal-page/rodents" routerLinkActive="active-link" (click)="onScrollTop()">Подробнее</button>
+    </div>
+    <img class="animal__card__image" src="assets/img/mouse.jpg" />
+
+    <img class="animal__card__image" src="assets/img/reptitle.jpg" />
+    <div class="animal-preview__card">
+      <h2 class="animal__card--name">О Рептилиях</h2>
+      <span class="animal__card--subtitle"
+      >Этот информационный портла предназначен дляЭтот информационный
+            портла предназначен дляЭтот информационный портла предназначен дл
+          </span>
+      <button class="animal__card__btn--more" routerLink="/animal-page/reptiles" routerLinkActive="active-link" (click)="onScrollTop()">Подробнее</button>
+    </div>
+
+    <div class="animal-preview__card">
+      <h2 class="animal__card--name">О других питомцах</h2>
+      <span class="animal__card--subtitle"
+      >Этот информационный портла предназначен дляЭтот информационный
+            портла предназначен дляЭтот информационный портла предназначен дл
+          </span>
+      <button class="animal__card__btn--more" routerLink="/animal-page/others" routerLinkActive="active-link" (click)="onScrollTop()">Подробнее</button>
+    </div>
+    <img class="animal__card__image" src="assets/img/other.jpg" />
+  </div>
+</section>
+
+
+<!-- SECTION FOOTER -->
+<footer class="footer">
+  <div class="footer__up">
+    <div class="logo">
+      <img src="assets/icons/logo.svg" alt="logo" />
+      <span class="logo__text" routerLink="/main-page">Info-pet</span>
+    </div>
+    <nav>
+      <ul class="nav__links">
+        <li><a routerLink="/animal-page/cats/1" routerLinkActive="active-link" (click)="onScrollTop()">Кошки</a></li>
+        <li><a routerLink="/animal-page/dogs/1" routerLinkActive="active-link" (click)="onScrollTop()" >Собаки</a></li>
+        <li><a routerLink="/animal-page/fish/1" routerLinkActive="active-link" (click)="onScrollTop()" >Водный мир</a></li>
+        <li><a routerLink="/animal-page/birds/1" routerLinkActive="active-link" (click)="onScrollTop()" >Птицы</a></li>
+        <li><a routerLink="/animal-page/rodents/1" routerLinkActive="active-link" (click)="onScrollTop()" >Грызуны</a></li>
+        <li><a routerLink="/animal-page/reptiles/1" routerLinkActive="active-link" (click)="onScrollTop()" >Рептилии</a></li>
+        <li><a routerLink="/animal-page/others/1" routerLinkActive="active-link" (click)="onScrollTop()" >Другие питомцы</a></li>
+      </ul>
+    </nav>
+    <button class="up"></button>
+  </div>
+
+  <div class="footer__down">
+    <ul class="footer__nav__links">
+      <li>2022-2023</li>
+      <li>
+        <a href="#">
+          ссылка на бесплатные источники иллюстраций, логотипа, картинок
+        </a>
+      </li>
+      <li><a href="#">Политика сайта</a></li>
+      <li><a href="#">Реклама на сайте</a></li>
+      <li><a href="#">Контакты</a></li>
+      <li><a href="#">Правовая информация</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
