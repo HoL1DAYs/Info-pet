@@ -24,7 +24,8 @@
   <!-- BLOCK WITH RELATIVE ADDRESS-->
   <div class="relative-address__block">
     <p class="relative-address">
-      Главная / Собаки /
+      <span (click)="onMain()">Главная / </span>
+      <span (click)="onAnimal()">Собаки / </span>
       <span class="relative-address--current">Бульдог</span>
     </p>
   </div>
@@ -43,15 +44,17 @@
     <img class="animal-breed__image" src="assets/img/pets/02.jpg" />
 
     <div class="animal-breed-text__block">
-      <h2 class="animal-breed--subtittle">Содержание:</h2>
-      <ul class="animal-breed--navigation">
-        <li (click)="onScroll($event)">Краткая информация</li>
-        <li (click)="onScroll($event)">Характер</li>
-        <li (click)="onScroll($event)">Воспитание</li>
-        <li (click)="onScroll($event)">Питание</li>
-        <li (click)="onScroll($event)">Уход</li>
-        <li (click)="onScroll($event)">Фотографии</li>
-      </ul>
+      <div class="navigation--breed">
+        <h2 class="animal-breed--subtittle">Содержание:</h2>
+        <ul class="animal-breed--navigation">
+          <li (click)="onScroll($event)">Краткая информация</li>
+          <li (click)="onScroll($event)">Характер</li>
+          <li (click)="onScroll($event)">Воспитание</li>
+          <li (click)="onScroll($event)">Питание</li>
+          <li (click)="onScroll($event)">Уход</li>
+          <li (click)="onScroll($event)">Фотографии</li>
+        </ul>
+      </div>
       <h2 class="animal-breed--subtittle">Краткая информация</h2>
       <table class="animal-breed__table--short-info">
         <tr>
@@ -201,13 +204,7 @@
           Краткое описание питомцаКраткое описание питомцаКраткое описание
           питомца
         </div>
-        <div class="animal-card__filters">
-          <button class="animal-card__filters__btn">Умные</button>
-          <button class="animal-card__filters__btn">Повадыри</button>
-          <button class="animal-card__filters__btn">Повадыри</button>
-          <button class="animal-card__filters__btn">Маленькие</button>
-          <span class="animal-card__filters--more">ещё...</span>
-        </div>
+
       </div>
     </div>
 
@@ -221,13 +218,7 @@
           Краткое описание питомцаКраткое описание питомцаКраткое описание
           питомца
         </div>
-        <div class="animal-card__filters">
-          <button class="animal-card__filters__btn">Умные</button>
-          <button class="animal-card__filters__btn">Повадыри</button>
-          <button class="animal-card__filters__btn">Повадыри</button>
-          <button class="animal-card__filters__btn">Маленькие</button>
-          <span class="animal-card__filters--more">ещё...</span>
-        </div>
+
       </div>
     </div>
 
@@ -241,13 +232,7 @@
           Краткое описание питомцаКраткое описание питомцаКраткое описание
           питомца
         </div>
-        <div class="animal-card__filters">
-          <button class="animal-card__filters__btn">Умные</button>
-          <button class="animal-card__filters__btn">Повадыри</button>
-          <button class="animal-card__filters__btn">Повадыри</button>
-          <button class="animal-card__filters__btn">Маленькие</button>
-          <span class="animal-card__filters--more">ещё...</span>
-        </div>
+
       </div>
     </div>
   </div>

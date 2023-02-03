@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-breed-page',
@@ -7,7 +8,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 })
 export class BreedPageComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
@@ -42,6 +43,14 @@ export class BreedPageComponent implements OnInit, AfterViewInit {
       left: 0,
       behavior: 'smooth'
     });
+  }
+
+  onAnimal(){
+    this.router.navigate(['..'], {relativeTo: this.route})
+  }
+
+  onMain(){
+    this.router.navigate(['main-page'])
   }
 
 }
