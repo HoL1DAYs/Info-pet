@@ -2,25 +2,6 @@
 <div class="animal__content__block">
   <!-- HEADER WITH NAVIGATION-->
 
-  <header class="header">
-    <div class="logo">
-      <img src="assets/icons/logo.svg" alt="logo" />
-      <span class="logo__text" routerLink="/main-page" routerLinkActive="white-header white-logo">Info-pet</span>
-    </div>
-    <nav>
-      <ul class="nav__links">
-        <li><a routerLink="/animal-page/cats/1" routerLinkActive="active-link">Кошки</a></li>
-        <li><a routerLink="/animal-page/dogs/1" routerLinkActive="active-link">Собаки</a></li>
-        <li><a routerLink="/animal-page/fish/1" routerLinkActive="active-link">Водный мир</a></li>
-        <li><a routerLink="/animal-page/birds/1" routerLinkActive="active-link">Птицы</a></li>
-        <li><a routerLink="/animal-page/rodents/1" routerLinkActive="active-link">Грызуны</a></li>
-        <li><a routerLink="/animal-page/reptiles/1" routerLinkActive="active-link">Рептилии</a></li>
-        <li><a routerLink="/animal-page/others/1" routerLinkActive="active-link">Другие питомцы</a></li>
-      </ul>
-    </nav>
-    <input class="search" placeholder="Поиск по сайту" />
-  </header>
-
   <!-- BLOCK WITH RELATIVE ADDRESS-->
   <div class="relative-address__block">
     <p class="relative-address">
@@ -32,7 +13,7 @@
 
   <!-- BLOCK WITH BREED NAME AND FILTERS-->
   <div class="animal-name-filters">
-    <h1 class="animal__name">Бульдог</h1>
+    <h1 class="animal__name">{{breedInfo.breed}}</h1>
     <div class="animal-name--filters">
       <button class="animal-card__filters__btn">Умные</button>
       <button class="animal-card__filters__btn">Повадыри</button>
@@ -41,7 +22,7 @@
   </div>
 
   <section class="animal-content">
-    <img class="animal-breed__image" src="assets/img/pets/02.jpg" />
+    <img class="animal-breed__image" src="{{breedInfo.thumbnail_url}}" height="700"/>
 
     <div class="animal-breed-text__block">
       <div class="navigation--breed">
@@ -59,7 +40,7 @@
       <table class="animal-breed__table--short-info">
         <tr>
           <td class="table--attribute">Название породы</td>
-          <td class="table--value">Бульдог</td>
+          <td class="table--value">{{breedInfo.breed}}</td>
         </tr>
         <tr>
           <td class="table--attribute">Страна происхождения</td>
@@ -88,41 +69,11 @@
       </table>
       <h2 class="animal-breed--subtittle">Характер</h2>
       <p class="animal-breed--about">
-        Австралийская борзая (кенгуровая) собака представляет собой крупную
-        борзую, телосложение мускулистое, ростом выше английских борзых.
-        Формат прямоугольный, собака длинная и сильная.Голова широкая, морда
-        сужается вниз. Мощная грудная клетка, глубокая и с округлыми
-        ребрами. Шея должна быть достаточно длинная, чтобы подобрать
-        кролика, а также сильная, чтобы держать большую дичь. Плечи сильно
-        отведены назад. Конечности стройные, крепкие и прямые. Тонкий,
-        длинный и очень гибкий хвост. Движения легкие, активные, с длинным
-        большим шагом.Глаза темные, форма миндалевидная, зрение
-        превосходное. Австралийская борзая отлично видит добычу на дальнем
-        расстоянии. Челюсти сильные, клыки острые, прикус может быть ровным
-        или ножницеобразным.Шерсть австралийских борзых может быть трех
-        видов – первый напоминает шерсть классических дирхаундов, то есть
-        короткий, жесткий, второй вид, гладкая грубоватая шерсть как у
-        грейхаундов и третий вид – это смесь из двух первых: короткая,
-        гладкая, жесткая
+        {{breedInfo.character}}
       </p>
       <h2 class="animal-breed--subtittle">Воспитание</h2>
       <p class="animal-breed--about">
-        Австралийская борзая (кенгуровая) собака представляет собой крупную
-        борзую, телосложение мускулистое, ростом выше английских борзых.
-        Формат прямоугольный, собака длинная и сильная.Голова широкая, морда
-        сужается вниз. Мощная грудная клетка, глубокая и с округлыми
-        ребрами. Шея должна быть достаточно длинная, чтобы подобрать
-        кролика, а также сильная, чтобы держать большую дичь. Плечи сильно
-        отведены назад. Конечности стройные, крепкие и прямые. Тонкий,
-        длинный и очень гибкий хвост. Движения легкие, активные, с длинным
-        большим шагом.Глаза темные, форма миндалевидная, зрение
-        превосходное. Австралийская борзая отлично видит добычу на дальнем
-        расстоянии. Челюсти сильные, клыки острые, прикус может быть ровным
-        или ножницеобразным.Шерсть австралийских борзых может быть трех
-        видов – первый напоминает шерсть классических дирхаундов, то есть
-        короткий, жесткий, второй вид, гладкая грубоватая шерсть как у
-        грейхаундов и третий вид – это смесь из двух первых: короткая,
-        гладкая, жесткая
+        {{breedInfo.training}}
       </p>
       <h2 class="animal-breed--subtittle">Питание</h2>
       <p class="animal-breed--about">
@@ -145,22 +96,7 @@
       </p>
       <h2 class="animal-breed--subtittle">Уход</h2>
       <p class="animal-breed--about">
-        Австралийская борзая (кенгуровая) собака представляет собой крупную
-        борзую, телосложение мускулистое, ростом выше английских борзых.
-        Формат прямоугольный, собака длинная и сильная.Голова широкая, морда
-        сужается вниз. Мощная грудная клетка, глубокая и с округлыми
-        ребрами. Шея должна быть достаточно длинная, чтобы подобрать
-        кролика, а также сильная, чтобы держать большую дичь. Плечи сильно
-        отведены назад. Конечности стройные, крепкие и прямые. Тонкий,
-        длинный и очень гибкий хвост. Движения легкие, активные, с длинным
-        большим шагом.Глаза темные, форма миндалевидная, зрение
-        превосходное. Австралийская борзая отлично видит добычу на дальнем
-        расстоянии. Челюсти сильные, клыки острые, прикус может быть ровным
-        или ножницеобразным.Шерсть австралийских борзых может быть трех
-        видов – первый напоминает шерсть классических дирхаундов, то есть
-        короткий, жесткий, второй вид, гладкая грубоватая шерсть как у
-        грейхаундов и третий вид – это смесь из двух первых: короткая,
-        гладкая, жесткая
+        {{breedInfo.care}}
       </p>
       <h2 class="animal-breed--subtittle">Фотографии</h2>
     </div>
@@ -247,13 +183,13 @@
     </div>
     <nav>
       <ul class="nav__links-fff">
-        <li><a routerLink="/animal-page/cats/1" routerLinkActive="active-link-bottom">Кошки</a></li>
-        <li><a routerLink="/animal-page/dogs/1" routerLinkActive="active-link-bottom">Собаки</a></li>
-        <li><a routerLink="/animal-page/fish/1" routerLinkActive="active-link-bottom">Водный мир</a></li>
-        <li><a routerLink="/animal-page/birds/1" routerLinkActive="active-link-bottom">Птицы</a></li>
-        <li><a routerLink="/animal-page/rodents/1" routerLinkActive="active-link-bottom">Грызуны</a></li>
-        <li><a routerLink="/animal-page/reptiles/1" routerLinkActive="active-link-bottom">Рептилии</a></li>
-        <li><a routerLink="/animal-page/others/1" routerLinkActive="active-link-bottom">Другие питомцы</a></li>
+        <li><a routerLink="/animal-page/cats" [queryParams]="{p: '1'}" routerLinkActive="active-link">Кошки</a></li>
+        <li><a routerLink="/animal-page/dogs" [queryParams]="{p: '1'}" routerLinkActive="active-link">Собаки</a></li>
+        <li><a routerLink="/animal-page/fish" [queryParams]="{p: '1'}" routerLinkActive="active-link">Водный мир</a></li>
+        <li><a routerLink="/animal-page/birds" [queryParams]="{p: '1'}" routerLinkActive="active-link">Птицы</a></li>
+        <li><a routerLink="/animal-page/rodents" [queryParams]="{p: '1'}" routerLinkActive="active-link">Грызуны</a></li>
+        <li><a routerLink="/animal-page/reptiles" [queryParams]="{p: '1'}" routerLinkActive="active-link">Рептилии</a></li>
+        <li><a routerLink="/animal-page/others" [queryParams]="{p: '1'}" routerLinkActive="active-link">Другие питомцы</a></li>
       </ul>
     </nav>
     <button class="up"></button>
