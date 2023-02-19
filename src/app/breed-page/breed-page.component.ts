@@ -17,6 +17,7 @@ export class BreedPageComponent implements OnInit {
   ngOnInit(): void {
     this.reqService.getBreedById(this.route.snapshot.params['id']).subscribe(responseData => {
       this.breedInfo = responseData
+      console.log(responseData)
     })
   }
 

@@ -14,6 +14,6 @@
             <li><a routerLink="/animal-page/others" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Другие питомцы</a></li>
         </ul>
     </nav>
-    <input [ngClass]="{search: !navBlack, search_black: navBlack}" placeholder="Поиск по сайту" [(ngModel)]="data"/>
+    <app-searchline></app-searchline>
 </header>
 

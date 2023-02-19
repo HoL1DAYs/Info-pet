@@ -31,10 +31,10 @@
     <div class="section__animal-card__grid">
       <div class="animal-card__block" routerLink="{{breedCard.id}}" *ngFor="let breedCard of breedCards">
         <div class="animal-card__block--image scale">
-          <img class="animal-card--image scale scale" src="{{breedCard.thumbnail_url}}" width="370" height="210"/>
+          <img id="breedImage" class="animal-card--image scale scale" src="{{breedCard.thumbnail_url}}" width="370" height="210"/>
         </div>
         <div class="animal-card__block--about">
-          <div class="animal-card__block--name">{{breedCard.breed}}
+          <div class="animal-card__block--name">{{(breedCard.breed | slice: 0:1 | uppercase) + (breedCard.breed | slice: 1)}}
             <div class="arrow-1">
               <img src="../../assets/icons/arrow.svg" />
             </div>

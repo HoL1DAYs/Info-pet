@@ -100,6 +100,9 @@
   background-size: 22px;
 }
 
+search:focus .dropdown-content {
+  display: block;
+}
 
 .title__header-up {
   text-align: center;

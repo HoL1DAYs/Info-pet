@@ -9,16 +9,18 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { AnimalPageComponent } from './animal-page/animal-page.component';
 import { HttpClientModule} from "@angular/common/http";
 import { HeaderComponent } from './header/header.component';
+import {SearchlineComponent} from "./header/searchline/searchline.component";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    BreedPageComponent,
-    MainPageComponent,
-    AnimalPageComponent,
-    HeaderComponent,
-  ],
+    declarations: [
+        AppComponent,
+        BreedPageComponent,
+        MainPageComponent,
+        AnimalPageComponent,
+        HeaderComponent,
+        SearchlineComponent,
+    ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   bootstrap: [AppComponent],
   providers: []

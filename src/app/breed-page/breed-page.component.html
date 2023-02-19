@@ -13,7 +13,7 @@
 
   <!-- BLOCK WITH BREED NAME AND FILTERS-->
   <div class="animal-name-filters">
-    <h1 class="animal__name">{{breedInfo.breed}}</h1>
+    <h1 class="animal__name">{{(breedInfo.breed | slice: 0:1 | uppercase) + (breedInfo.breed | slice: 1)}}</h1>
     <div class="animal-name--filters">
       <button class="animal-card__filters__btn">Умные</button>
       <button class="animal-card__filters__btn">Повадыри</button>
@@ -40,10 +40,10 @@
       <table class="animal-breed__table--short-info">
         <tr>
           <td class="table--attribute">Название породы</td>
-          <td class="table--value">{{breedInfo.breed}}</td>
+          <td class="table--value">{{(breedInfo.breed | slice: 0:1 | uppercase) + (breedInfo.breed | slice: 1)}}</td>
         </tr>
         <tr>
-          <td class="table--attribute">Страна происхождения</td>
+          <td class="table--attribute">breedInfo.br</td>
           <td class="table--value">Япония</td>
         </tr>
         <tr>
