@@ -284,11 +284,25 @@ search:focus .dropdown-content {
 .filter__buttons {
   padding-top: 2vh;
   padding-bottom: 2vh;
-  display: flex-start;
-  align-items: center;
-  justify-content: center;
+  display: inline-flex;
+  align-items: start;
+  justify-content: start;
   flex-wrap: wrap;
 }
+.disable__filters__button{
+  display: inline-flex;
+  align-items: flex-end;
+  justify-items: flex-end;
+}
+
+.disable__filters__button button{
+  border: none;
+  color: #c61f1f;
+  font-size: 16px;
+  background-color: #E8F2FA;
+}
+
+
 
 
 .filter__button {
@@ -305,7 +319,7 @@ search:focus .dropdown-content {
 }
 
 .filter__button:hover,
-.filter__button .btn-clicked {
+.filter__button .btn__clicked {
   background-color: #006e07;
   color: #fff;
 }

@@ -11,18 +11,16 @@
     <h1 class="animal__name">Собаки</h1>
 
     <div class="filter__buttons">
-      <button class="filter__button btn-clicked" routerLinkActive="btn-clicked">Все породы</button>
-      <button class="filter__button">Умные</button>
-      <button class="filter__button">Маленькие</button>
-      <button class="filter__button">Большие</button>
-      <button class="filter__button">Лысые</button>
-      <button class="filter__button">Охотничьи</button>
-      <button class="filter__button">Повадыри</button>
-      <button class="filter__button">Охотничьи</button>
-      <button class="filter__button">Стороживые</button>
+      <button class="filter__button" routerLink="./" (click)="appendToFilters(i)" [queryParams]="{p: number, filters: filters}" routerLinkActive="btn__clicked" *ngFor="let filter of visibleFilters, let i=index">{{filter}}</button>
+    </div>
+    <div class="disable__filters__button" *ngIf="filters.length !== 0">
+      <button (click)="emptyFilters()">Сбросить</button>
     </div>
     <div class="filter__block--more">
-      <span class="filter__title--more">Показать все категории</span>
+      <span class="filter__title--more" (click)="allFilters()" *ngIf="!toggleFilters, else fold">Показать все категории</span>
+      <ng-template #fold>
+        <span class="filter__title--more" (click)="allFilters()">Свернуть все категории</span>
+      </ng-template>
     </div>
   </section>
 
@@ -42,7 +40,6 @@
           <div class="animal-card__block--info">
             {{breedCard.subtitle}}
           </div>
-
         </div>
       </div>
     </div>

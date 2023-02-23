@@ -15,25 +15,18 @@
       "description": "Generated server url"
     }
   ],
-  "tags": [
-    {
-      "name": "Котроллер для животных",
-      "description": "Позволяет получить название, фильтры и их id"
-    }
-  ],
   "paths": {
-    "/api/v1/breeds/{id}": {
+    "/api/v1/{animal_id}/breeds": {
       "get": {
         "tags": [
-          "Котроллер для парод"
+          "breed-controller"
         ],
-        "summary": "Получить список карточек всех животных вида = id",
-        "operationId": "hello",
+        "description": "Get breed by animal id with filters(optional)",
+        "operationId": "findBreeds",
         "parameters": [
           {
-            "name": "id",
+            "name": "animal_id",
             "in": "path",
-            "description": "ID животного",
             "required": true,
             "schema": {
               "type": "integer",
@@ -41,23 +34,31 @@
             }
           },
           {
-            "name": "page",
+            "name": "filters",
             "in": "query",
-            "description": "Номер страницы пагинации начиная c 0",
             "required": false,
             "schema": {
-              "type": "string",
-              "default": "0"
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "OPTIONAL, zero-based page index",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           },
           {
             "name": "size",
             "in": "query",
-            "description": "Количество элементов на странице",
+            "description": "OPTIONAL, the size of the page to be returned",
             "required": false,
             "schema": {
-              "type": "string",
-              "default": "12"
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -75,18 +76,52 @@
         }
       }
     },
-    "/api/v1/breeds/breed/{id}": {
+    "/api/v1/breeds": {
       "get": {
         "tags": [
-          "Котроллер для парод"
+          "breed-controller"
         ],
-        "summary": "Получить подробное описание канкретной пароды",
+        "description": "Get all breeds with name = 'q'",
+        "operationId": "findAllBreedsByName",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Query with breed name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Breed"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/breeds/{id}": {
+      "get": {
+        "tags": [
+          "breed-controller"
+        ],
+        "description": "Get breed by id",
         "operationId": "getBreedById",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID пароды",
             "required": true,
             "schema": {
               "type": "integer",
@@ -100,7 +135,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/Breed"
+                  "type": "object"
                 }
               }
             }
@@ -111,14 +146,14 @@
     "/api/v1/animal/{id}": {
       "get": {
         "tags": [
-          "Котроллер для животных"
+          "animal-controller"
         ],
+        "description": "Get filters and animal name by ID",
         "operationId": "getAnimal",
         "parameters": [
           {
-            "name": "id",
+            "name": "animal ID",
             "in": "path",
-            "description": "Id животного",
             "required": true,
             "schema": {
               "type": "integer",
@@ -251,6 +286,9 @@
             "type": "integer",
             "format": "int32"
           },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
           "pageable": {
             "$ref": "#/components/schemas/PageableObject"
           },
@@ -275,6 +313,9 @@
           "offset": {
             "type": "integer",
             "format": "int64"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
           },
           "pageNumber": {
             "type": "integer",
@@ -304,6 +345,20 @@
           },
           "value": {
             "type": "string"
+          }
+        }
+      },
+      "SortObject": {
+        "type": "object",
+        "properties": {
+          "empty": {
+            "type": "boolean"
+          },
+          "sorted": {
+            "type": "boolean"
+          },
+          "unsorted": {
+            "type": "boolean"
           }
         }
       }

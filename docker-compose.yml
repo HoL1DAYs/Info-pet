@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  postgres:
+    image: 'postgres:15.1-alpine'
+    container_name: 'infopet-postgres'
+    environment:
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_HOST_AUTH_METHOD=trust'
+      - 'POSTGRES_DB=postgres'
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
+      - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
+
+  app:
+    image: lesn0y/info-pet-backend:0.0.1
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres
+
+  python_script:
+    build: ./script
+    container_name: 'infopet-script'
+    depends_on:
+      - postgres
+
+
+
+volumes:
+  db-data:

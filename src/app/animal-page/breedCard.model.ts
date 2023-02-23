@@ -8,7 +8,7 @@ export interface BreedCard{
     thumbnail_url: string;
     training: string;
     parameters: [];
-    filters: [];
+    filters: string[];
     diet?: string;
     breedGallery?: string;
 }

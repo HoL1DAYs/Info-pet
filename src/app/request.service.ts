@@ -15,8 +15,12 @@ export class RequestService{
         return this.http.get<any>(`//localhost:8080/api/v1/breeds/${id}?size=12`)
     }
 
-    fetchData(pageNumber){
-        return this.http.get<ResponseDataModel>(`//localhost:8080/api/v1/1/breeds?size=12&page=${pageNumber}`)
+    fetchData(pageNumber, filters?){
+        if (filters != null){
+            return this.http.get<ResponseDataModel>(`//localhost:8080/api/v1/1/breeds?size=12&page=0&filters=${filters}`)
+        } else{
+            return this.http.get<ResponseDataModel>(`//localhost:8080/api/v1/1/breeds?size=12&page=${pageNumber}`)
+        }
         //     .pipe(map(responseData => {
         //     // const postArray: BreedCard[] = [];
         //     // for (const key in responseData){

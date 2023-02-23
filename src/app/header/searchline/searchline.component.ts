@@ -24,11 +24,13 @@ export class SearchlineComponent {
   enableDropdown(){
     this.toggleDropdown = true;
   }
+
+
   disableDropdown($event){
     setTimeout(()=>{
       this.toggleDropdown = false;
       console.log($event.target.text = '')
-    }, 150)
+    }, 220)
   }
 
 

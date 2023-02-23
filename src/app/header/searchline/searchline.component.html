@@ -2,8 +2,12 @@
     <input [ngClass]="{search: !navBlack, search_black: navBlack}" placeholder="Поиск по сайту" [(ngModel)]="data" (input)="onSearch(data.toLowerCase())" (focusin)="enableDropdown()" (focusout)="disableDropdown($event)" #inputField/>
     <div class="dropdown-content" [ngClass]="{show: toggleDropdown}">
         <div class="search_bread_card" *ngFor="let breedCard of breedCards" [routerLink]="['animal-page', 'dogs', breedCard.id]">
-            <img src="{{breedCard.thumbnail_url}}">
-            <a>{{breedCard.breed}}</a>
+            <div class="search_bread_card-img">
+                <img src="{{breedCard.thumbnail_url}}">
+            </div>
+            <div class="search_bread_card-div">
+                <p>{{breedCard.breed}}</p>
+            </div>
         </div>
     </div>
 </div>
