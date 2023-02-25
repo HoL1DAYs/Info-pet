@@ -12,14 +12,19 @@ import {BreedCard} from "./breedCard.model";
 })
 export class AnimalPageComponent implements OnInit {
 
-  @ViewChild('paginationItems', {static: false}) paginationItem: ElementRef
+  @ViewChild('filtersArray', {static: false}) filtersArray: ElementRef
 
   constructor(private router: Router, private route: ActivatedRoute, private reqService: RequestService) { }
+
+
+
 
   number: number;
   breedCards: BreedCard[] = [];
   filterActive: boolean = false;
-  filters: number[] = []
+  filters: string[] = [];
+  filtersPage: string[];
+
 
 
   toggleFilters: boolean = false;
@@ -71,7 +76,7 @@ export class AnimalPageComponent implements OnInit {
           this.number = params['p']
     }
     )
-    this.reqService.fetchData(0).subscribe(responseData => {
+    this.reqService.fetchData(this.number-1).subscribe(responseData => {
           this.breedCards = responseData.content
           console.log(responseData)
           console.log(this.route.snapshot.queryParams.filters)
@@ -83,93 +88,50 @@ export class AnimalPageComponent implements OnInit {
       this.reqService.fetchData(0, this.route.snapshot.queryParams.filters).subscribe(res => this.breedCards = res.content)
     }
 
+
+
     this.visibleFilters = this.filtersList.slice(0,8)
   }
 
 
-  ngAfterViewChecked(){
-    this.number = this.route.snapshot.queryParams['p']
-    const paginationItemList = this.paginationItem.nativeElement.childNodes
-    for (let k = 0; k < 8; k++) {
-      paginationItemList[(k)].firstChild.classList.remove('item-active')
-    }
-    paginationItemList[(+this.number)].firstChild.classList.add('item-active')
 
+  appendToFilters(i, filtersFromIter){
+    this.filters.push(filtersFromIter)
+    console.log(this.filters)
+    this.reqService.fetchData(0).subscribe(response => this.breedCards = response.content)
 
-  }
+    // this.filtersPage.push(filtersFromIter)
+    //
+    // if (this.filters.includes(i)){
+    //   delete this.filters[this.filters.indexOf(i)]
+    //   this.filters = this.filters.filter(Number)
+    //   console.log(this.filters)
+    //   let filterString = this.filters.toString()
+    //   if (filterString.length < 1){
+    //     filterString = null
+    //     this.reqService.fetchData(this.number).subscribe(response => this.breedCards = response.content)
+    //   }
+    //   this.router.navigate(['./'],{relativeTo: this.route, queryParams: {p: this.number, filters: filterString}})
+    //   this.reqService.fetchData(this.number, filterString).subscribe(response => this.breedCards = response.content)
+    // } else{
+    //   this.filters.push(filtersFromIter)
+    //   console.log(this.filters)
+    //   // this.filters = this.filters.filter(Number)
+    //   let filtersString = this.filters.toString()
+    //   console.log(filtersString)
+    //   this.router.navigate(['./'],{relativeTo: this.route, queryParams: {p: this.number, filters: filtersString}})
+    //   this.reqService.fetchData(this.number, filtersString).subscribe(response => this.breedCards = response.content)
+    // }
 
-
-  onClick(number: number){
-    this.router.navigate(['/animal-page', this.route.snapshot.params['animal']], {queryParams: {p: number}})
-    this.number = number
-    this.reqService.fetchData(this.number - 1).subscribe(responseData=> {
-      this.breedCards = responseData.content
-    })
-    const paginationItemList = this.paginationItem.nativeElement.childNodes
-    for (let k = 0; k < 8; k++) {
-      paginationItemList[(k)].firstChild.classList.remove('item-active')
-    }
-    paginationItemList[(+number)].firstChild.classList.add('item-active')
-  }
-
-  appendToFilters(i){
-    if (this.filters.includes(i)){
-      delete this.filters[this.filters.indexOf(i)]
-      this.filters = this.filters.filter(Number)
-      console.log(this.filters)
-      let filterString = this.filters.toString()
-      if (filterString.length < 1){
-        filterString = null
-        this.reqService.fetchData(this.number).subscribe(response => this.breedCards = response.content)
-      }
-      this.router.navigate(['./'],{relativeTo: this.route, queryParams: {p: this.number, filters: filterString}})
-      this.reqService.fetchData(this.number, filterString).subscribe(response => this.breedCards = response.content)
-    } else{
-      this.filters.push(i)
-      console.log(this.filters)
-      this.filters = this.filters.filter(Number)
-      let filtersString = this.filters.toString()
-      console.log(filtersString)
-      this.router.navigate(['./'],{relativeTo: this.route, queryParams: {p: this.number, filters: filtersString}})
-      this.reqService.fetchData(this.number, filtersString).subscribe(response => this.breedCards = response.content)
-    }
   }
 
   emptyFilters(){
     this.filters = []
     this.router.navigate(['./'],{relativeTo: this.route, queryParams: {p: this.number, filters: this.filters}})
-    this.reqService.fetchData(this.number).subscribe(response => this.breedCards = response.content)
+    this.reqService.fetchData(this.number-1).subscribe(response => this.breedCards = response.content)
   }
 
-  onForward(){
-    this.number = +this.number + 1;
-    this.router.navigate(['/animal-page', this.route.snapshot.params['animal']], {queryParams: {p: this.number}})
-    this.reqService.fetchData(this.number - 1).subscribe(responseData => {
-      this.breedCards = responseData.content
-    })
-    const paginationItemList = this.paginationItem.nativeElement.childNodes
-    for (let k = 0; k < 6; k++) {
-      paginationItemList[(k)].firstChild.classList.remove('item-active')
-    }
-    paginationItemList[(+this.number)].firstChild.classList.add('item-active')
-  }
 
-  onBackward(){
-    this.number = +this.number - 1;
-    if (this.number < 1){
-      this.number = 1
-    }
-    this.router.navigate(['/animal-page', this.route.snapshot.params['animal']], {queryParams: {p: this.number}})
-    this.reqService.fetchData(this.number - 1).subscribe(responseData => {
-      this.breedCards = responseData.content
-    })
-    const paginationItemList = this.paginationItem.nativeElement.childNodes
-    // refactor in the future
-    for (let k = 0; k < 6; k++) {
-      paginationItemList[(k)].firstChild.classList.remove('item-active')
-    }
-    paginationItemList[(+this.number)].firstChild.classList.add('item-active')
-  }
 
   onMain(){
     this.router.navigate(['main-page'])
@@ -185,7 +147,5 @@ export class AnimalPageComponent implements OnInit {
     }
   }
 
-  toggleFilterActive(){
-    this.filterActive = !this.filterActive
-  }
+
 }

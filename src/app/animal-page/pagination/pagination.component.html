@@ -1,0 +1,38 @@
+<div class="block__pagination">
+    <div class="pagination">
+        <ul #paginationItems>
+            <li>
+                <a class="pagination__item--side" (click)="onBackward()" title="Назад">&#60;</a>
+            </li>
+            <li>
+                <a
+                        class="pagination__item"
+                        (click)="onClick(1)"
+                        routerLinkActive="item-active"
+                        title="Страница 1"
+                >1</a
+                >
+            </li>
+            <li>
+                <a class="pagination__item" (click)="onClick(2)" title="Страница 2">2</a>
+            </li>
+            <li>
+                <a class="pagination__item" (click)="onClick(3)" title="Страница 3">3</a>
+            </li>
+            <li>
+                <a class="pagination__item" (click)="onClick(4)" title="Страница 4">4</a>
+            </li>
+            <li>
+                <a class="pagination__item" (click)="onClick(5)" title="Страница 5">5</a>
+            </li>
+            <li>
+                <a class="pagination__item" (click)="onClick(6)" title="Страница 6" >6</a>
+            </li>
+            <li>
+                <a class="pagination__item--side" (click)="onForward()" title="Вперед"
+                >&#62;</a
+                >
+            </li>
+        </ul>
+    </div>
+</div>

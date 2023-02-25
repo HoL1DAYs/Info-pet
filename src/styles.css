@@ -291,15 +291,15 @@ search:focus .dropdown-content {
 }
 .disable__filters__button{
   display: inline-flex;
-  align-items: flex-end;
-  justify-items: flex-end;
+  align-items: center;
+  justify-items: center;
 }
 
 .disable__filters__button button{
   border: none;
   color: #c61f1f;
   font-size: 16px;
-  background-color: #E8F2FA;
+  background-color: white;
 }
 
 

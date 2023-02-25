@@ -13,10 +13,10 @@ export class SearchlineComponent {
   data: string;
   breedCards: BreedCard[] = []
   toggleDropdown: boolean;
-  @Input() navBlack: boolean
+  @Input() navBlack: boolean;
+  @ViewChild('inputField', {static: false}) inputField: ElementRef;
 
 
-  @ViewChild('inputField', {static: false}) inputField: ElementRef
   constructor(private reqService: RequestService, private router: Router, private route: ActivatedRoute) {
   }
 
@@ -29,18 +29,19 @@ export class SearchlineComponent {
   disableDropdown($event){
     setTimeout(()=>{
       this.toggleDropdown = false;
-      console.log($event.target.text = '')
+      this.inputField.nativeElement.value = '';
     }, 220)
   }
 
 
   onSearch(data){
+    this.toggleDropdown = true;
     setTimeout(() => {
       this.reqService.getByQuery(data).subscribe(responseData => {
         this.breedCards = responseData
         this.breedCards = this.breedCards.slice(0,10)
       })
-    }, 500)
+    }, 150)
   }
   ngDoCheck(){
     this.isBlack()

@@ -10,11 +10,13 @@
     </p>
     <h1 class="animal__name">Собаки</h1>
 
-    <div class="filter__buttons">
-      <button class="filter__button" routerLink="./" (click)="appendToFilters(i)" [queryParams]="{p: number, filters: filters}" routerLinkActive="btn__clicked" *ngFor="let filter of visibleFilters, let i=index">{{filter}}</button>
-    </div>
-    <div class="disable__filters__button" *ngIf="filters.length !== 0">
-      <button (click)="emptyFilters()">Сбросить</button>
+    <div class="filters">
+      <div class="filter__buttons" #filtersArray>
+        <button class="filter__button"  (click)="appendToFilters(i, filter)" *ngFor="let filter of visibleFilters, let i=index">{{filter}} </button>
+      </div>
+      <div class="disable__filters__button" *ngIf="filters.length !== 0">
+        <button (click)="emptyFilters()">Сбросить</button>
+      </div>
     </div>
     <div class="filter__block--more">
       <span class="filter__title--more" (click)="allFilters()" *ngIf="!toggleFilters, else fold">Показать все категории</span>
@@ -27,7 +29,7 @@
   <!-- SECTION WITH PET CARD -->
   <section>
     <div class="section__animal-card__grid">
-      <div class="animal-card__block" routerLink="{{breedCard.id}}" *ngFor="let breedCard of breedCards">
+      <div class="animal-card__block" routerLink="{{breedCard.id}}" *ngFor="let breedCard of breedCards | filter: filters">
         <div class="animal-card__block--image scale">
           <img id="breedImage" class="animal-card--image scale scale" src="{{breedCard.thumbnail_url}}" width="370" height="210"/>
         </div>
@@ -45,44 +47,7 @@
     </div>
   </section>
 
-  <div class="block__pagination">
-    <div class="pagination">
-      <ul #paginationItems>
-        <li>
-          <a class="pagination__item--side" (click)="onBackward()" title="Назад">&#60;</a>
-        </li>
-        <li>
-          <a
-            class="pagination__item"
-            (click)="onClick(1)"
-            routerLinkActive="item-active"
-            title="Страница 1"
-          >1</a
-          >
-        </li>
-        <li>
-          <a class="pagination__item" (click)="onClick(2)" title="Страница 2">2</a>
-        </li>
-        <li>
-          <a class="pagination__item" (click)="onClick(3)" title="Страница 3">3</a>
-        </li>
-        <li>
-          <a class="pagination__item" (click)="onClick(4)" title="Страница 4">4</a>
-        </li>
-        <li>
-          <a class="pagination__item" (click)="onClick(5)" title="Страница 5">5</a>
-        </li>
-        <li>
-          <a class="pagination__item" (click)="onClick(6)" title="Страница 6" >6</a>
-        </li>
-        <li>
-          <a class="pagination__item--side" (click)="onForward()" title="Вперед"
-          >&#62;</a
-          >
-        </li>
-      </ul>
-    </div>
-  </div>
+  <app-pagination (breedCards)="breedCards = $event"></app-pagination>
 
   <div class="animal-about__block">
         <span class="animal-about__text">

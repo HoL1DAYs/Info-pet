@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+
+api.json
+init.sql
+script
+docker-compose.yml
