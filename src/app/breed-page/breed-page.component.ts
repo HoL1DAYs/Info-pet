@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {RequestService} from "../request.service";
-import {BreedCard} from "../animal-page/breedCard.model";
+
 
 @Component({
   selector: 'app-breed-page',
