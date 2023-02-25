@@ -96,9 +96,18 @@ export class AnimalPageComponent implements OnInit {
 
 
   appendToFilters(i, filtersFromIter){
-    this.filters.push(filtersFromIter)
-    console.log(this.filters)
-    this.reqService.fetchData(0).subscribe(response => this.breedCards = response.content)
+    if (this.filters.includes(filtersFromIter)){
+      delete this.filters[this.filters.indexOf(filtersFromIter)]
+      console.log(this.filters)
+      this.filters = this.filters.filter(String)
+      console.log(this.filters)
+      this.reqService.fetchData(this.number-1).subscribe(response => this.breedCards = response.content)
+    } else{
+      this.filters.push(filtersFromIter)
+      console.log(this.filters)
+      this.reqService.fetchData(this.number-1).subscribe(response => this.breedCards = response.content)
+    }
+
 
     // this.filtersPage.push(filtersFromIter)
     //
