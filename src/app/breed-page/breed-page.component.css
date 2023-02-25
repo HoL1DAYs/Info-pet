@@ -1,21 +1,6 @@
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-    position: absolute;
-    left: 3.8vw;
-    right: 3.8vw;
-}
 
-.logo {
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-}
-
-.logo__text {
+.logo__text_black {
     font-family: Source Sans Pro;
     font-weight: 600;
     font-style: italic;
@@ -37,27 +22,19 @@
     border-bottom-width: 1px;
 }
 
-.nav__links {
-    padding: 0 20px;
-    display: flex;
-    font-family: Montserrat, Arial, sans-serif;
-    list-style: none;
-}
+
 
 .nav__links li {
     padding: 0 20px;
 }
 
-.nav__links a {
+.nav__links_black a {
     font-size: 16px;
     color: #000;
     text-decoration: none;
     transition: all 0.3s ease 0s;
 }
 
-.nav__links a:hover {
-    text-decoration: underline;
-}
 
 .active-link {
     text-decoration: underline !important;
@@ -67,25 +44,7 @@
 
 
 
-.search {
-    position: relative;
-    width: 23px;
-    height: 23px;
-    border-radius: 50%;
-    transition-duration: 500ms;
-    cursor: pointer;
-    background-color: transparent;
-    font-family: Montserrat, Arial, sans-serif;
-    font-size: 0;
-    border: none;
-    overflow: hidden;
-    background-image: url(/assets/icons/search.svg);
-    background-repeat: no-repeat;
-    background-size: 22px;
-    background-position: 45% 50%;
-}
-
-.search:focus {
+.search_black:focus {
     width: 300px;
     height: 34px;
     cursor: text;

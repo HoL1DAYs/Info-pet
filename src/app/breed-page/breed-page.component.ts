@@ -1,26 +1,26 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {RequestService} from "../request.service";
+import {BreedCard} from "../animal-page/breedCard.model";
 
 @Component({
   selector: 'app-breed-page',
   templateUrl: './breed-page.component.html',
   styleUrls: ['./breed-page.component.css']
 })
-export class BreedPageComponent implements OnInit, AfterViewInit {
+export class BreedPageComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private reqService: RequestService) { }
+  breedInfo: any = {}
 
 
   ngOnInit(): void {
-
+    this.reqService.getBreedById(this.route.snapshot.params['id']).subscribe(responseData => {
+      this.breedInfo = responseData
+      console.log(responseData)
+    })
   }
 
-  ngAfterViewInit() {
-    // document.addEventListener('DOMContentLoaded', function() {
-    //   const elems = document.querySelectorAll('.fixed-action-btn');
-    //   const instances = M.FloatingActionButton.init(elems, options);
-    // });
-  }
 
   onScroll($event){
     console.log($event)

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RequestService} from "../request.service";
 
 @Component({
   selector: 'app-main-page',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class MainPageComponent implements OnInit {
   data: string;
 
-  constructor() { }
+  constructor(private reqService: RequestService) { }
 
   ngOnInit(): void {
 
@@ -22,14 +23,10 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-  getJSON(url, errorMsg = 'Something went wrong') {
-    return fetch(url).then(response => {
-      if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
-      return response.json();
-    });
-  };
+  onSearch(){
+    this.reqService.fetchData(0).subscribe(responseData=>{
 
-
-
+    })
+  }
 
 }

@@ -1,24 +1,6 @@
 <body>
 <!-- HEADER WITH NAVIGATION-->
 <div class="animal__content__block">
-  <header class="header">
-    <div class="logo">
-      <img src="assets/icons/logo.svg" alt="logo" />
-      <span class="logo__text" routerLink="/main-page" routerLinkActive="white-header white-logo">Info-pet</span>
-    </div>
-    <nav>
-      <ul class="nav__links">
-        <li><a routerLink="/animal-page/cats/1" routerLinkActive="active-link">Кошки</a></li>
-        <li><a routerLink="/animal-page/dogs/1" routerLinkActive="active-link">Собаки</a></li>
-        <li><a routerLink="/animal-page/fish/1" routerLinkActive="active-link">Водный мир</a></li>
-        <li><a routerLink="/animal-page/birds/1" routerLinkActive="active-link">Птицы</a></li>
-        <li><a routerLink="/animal-page/rodents/1" routerLinkActive="active-link">Грызуны</a></li>
-        <li><a routerLink="/animal-page/reptiles/1" routerLinkActive="active-link">Рептилии</a></li>
-        <li><a routerLink="/animal-page/others/1" routerLinkActive="active-link">Другие питомцы</a></li>
-      </ul>
-    </nav>
-    <input class="search" placeholder="Поиск по сайту" />
-  </header>
 
   <!-- SECTION WITH TITLE AND FILTERS -->
   <section class="filters-window">
@@ -28,281 +10,44 @@
     </p>
     <h1 class="animal__name">Собаки</h1>
 
-    <div class="filter__buttons">
-      <button class="filter__button btn-clicked" routerLinkActive="btn-clicked">Все породы</button>
-      <button class="filter__button">Умные</button>
-      <button class="filter__button">Маленькие</button>
-      <button class="filter__button">Большие</button>
-      <button class="filter__button">Лысые</button>
-      <button class="filter__button">Охотничьи</button>
-      <button class="filter__button">Повадыри</button>
-      <button class="filter__button">Охотничьи</button>
-      <button class="filter__button">Стороживые</button>
+    <div class="filters">
+      <div class="filter__buttons" #filtersArray>
+        <button class="filter__button"  (click)="appendToFilters(i, filter)" *ngFor="let filter of visibleFilters, let i=index">{{filter}} </button>
+      </div>
+      <div class="disable__filters__button" *ngIf="filters.length !== 0">
+        <button (click)="emptyFilters()">Сбросить</button>
+      </div>
     </div>
     <div class="filter__block--more">
-      <span class="filter__title--more">Показать все категории</span>
+      <span class="filter__title--more" (click)="allFilters()" *ngIf="!toggleFilters, else fold">Показать все категории</span>
+      <ng-template #fold>
+        <span class="filter__title--more" (click)="allFilters()">Свернуть все категории</span>
+      </ng-template>
     </div>
   </section>
 
   <!-- SECTION WITH PET CARD -->
   <section>
     <div class="section__animal-card__grid">
-      <div class="animal-card__block" routerLink="breed">
+      <div class="animal-card__block" routerLink="{{breedCard.id}}" *ngFor="let breedCard of breedCards | filter: filters">
         <div class="animal-card__block--image scale">
-          <img class="animal-card--image scale scale" src="assets/img/pets/01.jpg" />
+          <img id="breedImage" class="animal-card--image scale scale" src="{{breedCard.thumbnail_url}}" width="370" height="210"/>
         </div>
         <div class="animal-card__block--about">
-          <div class="animal-card__block--name">Акина-ту
+          <div class="animal-card__block--name">{{(breedCard.breed | slice: 0:1 | uppercase) + (breedCard.breed | slice: 1)}}
             <div class="arrow-1">
               <img src="../../assets/icons/arrow.svg" />
             </div>
           </div>
           <div class="animal-card__block--info">
-            Краткое описание питомцаКраткое описание питомцаКраткое описание
-            питомца
+            {{breedCard.subtitle}}
           </div>
-          
-        </div>
-      </div>
-
-      <div class="animal-card__block" routerLink="breed">
-        <div class="animal-card__block--image scale">
-          <img class="animal-card--image scale" src="assets/img/pets/01.jpg" />
-        </div>
-        <div class="animal-card__block--about">
-                    <div class="animal-card__block--name">Акина-ту
-            <div class="arrow-1">
-              <img src="../../assets/icons/arrow.svg" />
-            </div>
-          </div>
-          <div class="animal-card__block--info">
-            Краткое описание питомцаКраткое описание питомцаКраткое описание
-            питомца
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="animal-card__block" routerLink="breed">
-        <div class="animal-card__block--image scale">
-          <img class="animal-card--image scale" src="assets/img/pets/01.jpg" />
-        </div>
-        <div class="animal-card__block--about">
-                    <div class="animal-card__block--name">Акина-ту
-            <div class="arrow-1">
-              <img src="../../assets/icons/arrow.svg" />
-            </div>
-          </div>
-          <div class="animal-card__block--info">
-            Краткое описание питомцаКраткое описание питомцаКраткое описание
-            питомца
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="animal-card__block" routerLink="breed">
-        <div class="animal-card__block--image scale">
-          <img class="animal-card--image scale" src="assets/img/pets/01.jpg" />
-        </div>
-        <div class="animal-card__block--about">
-                    <div class="animal-card__block--name">Акина-ту
-            <div class="arrow-1">
-              <img src="../../assets/icons/arrow.svg" />
-            </div>
-          </div>
-          <div class="animal-card__block--info">
-            Краткое описание питомцаКраткое описание питомцаКраткое описание
-            питомца
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="animal-card__block" routerLink="breed">
-        <div class="animal-card__block--image scale">
-          <img class="animal-card--image scale" src="assets/img/pets/01.jpg" />
-        </div>
-        <div class="animal-card__block--about">
-                    <div class="animal-card__block--name">Акина-ту
-            <div class="arrow-1">
-              <img src="../../assets/icons/arrow.svg" />
-            </div>
-          </div>
-          <div class="animal-card__block--info">
-            Краткое описание питомцаКраткое описание питомцаКраткое описание
-            питомца
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="animal-card__block" routerLink="breed">
-        <div class="animal-card__block--image scale">
-          <img class="animal-card--image scale" src="assets/img/pets/01.jpg" />
-        </div>
-        <div class="animal-card__block--about">
-                    <div class="animal-card__block--name">Акина-ту
-            <div class="arrow-1">
-              <img src="../../assets/icons/arrow.svg" />
-            </div>
-          </div>
-          <div class="animal-card__block--info">
-            Краткое описание питомцаКраткое описание питомцаКраткое описание
-            питомца
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="animal-card__block" routerLink="breed">
-        <div class="animal-card__block--image scale">
-          <img class="animal-card--image scale" src="assets/img/pets/01.jpg" />
-        </div>
-        <div class="animal-card__block--about">
-                    <div class="animal-card__block--name">Акина-ту
-            <div class="arrow-1">
-              <img src="../../assets/icons/arrow.svg" />
-            </div>
-          </div>
-          <div class="animal-card__block--info">
-            Краткое описание питомцаКраткое описание питомцаКраткое описание
-            питомца
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="animal-card__block" routerLink="breed">
-        <div class="animal-card__block--image scale">
-          <img class="animal-card--image scale" src="assets/img/pets/01.jpg" />
-        </div>
-        <div class="animal-card__block--about">
-                    <div class="animal-card__block--name">Акина-ту
-            <div class="arrow-1">
-              <img src="../../assets/icons/arrow.svg" />
-            </div>
-          </div>
-          <div class="animal-card__block--info">
-            Краткое описание питомцаКраткое описание питомцаКраткое описание
-            питомца
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="animal-card__block" routerLink="breed">
-        <div class="animal-card__block--image scale">
-          <img class="animal-card--image scale" src="assets/img/pets/01.jpg" />
-        </div>
-        <div class="animal-card__block--about">
-                    <div class="animal-card__block--name">Акина-ту
-            <div class="arrow-1">
-              <img src="../../assets/icons/arrow.svg" />
-            </div>
-          </div>
-          <div class="animal-card__block--info">
-            Краткое описание питомцаКраткое описание питомцаКраткое описание
-            питомца
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="animal-card__block" routerLink="breed">
-        <div class="animal-card__block--image scale">
-          <img class="animal-card--image scale" src="assets/img/pets/01.jpg" />
-        </div>
-        <div class="animal-card__block--about">
-                    <div class="animal-card__block--name">Акина-ту
-            <div class="arrow-1">
-              <img src="../../assets/icons/arrow.svg" />
-            </div>
-          </div>
-          <div class="animal-card__block--info">
-            Краткое описание питомцаКраткое описание питомцаКраткое описание
-            питомца
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="animal-card__block" routerLink="breed">
-        <div class="animal-card__block--image scale">
-          <img class="animal-card--image scale" src="assets/img/pets/01.jpg" />
-        </div>
-        <div class="animal-card__block--about">
-                    <div class="animal-card__block--name">Акина-ту
-            <div class="arrow-1">
-              <img src="../../assets/icons/arrow.svg" />
-            </div>
-          </div>
-          <div class="animal-card__block--info">
-            Краткое описание питомцаКраткое описание питомцаКраткое описание
-            питомца
-          </div>
-          
-        </div>
-      </div>
-
-      <div class="animal-card__block" routerLink="breed">
-        <div class="animal-card__block--image scale">
-          <img class="animal-card--image scale scale" src="assets/img/pets/01.jpg" />
-        </div>
-        <div class="animal-card__block--about">
-                    <div class="animal-card__block--name">Акина-ту
-            <div class="arrow-1">
-              <img src="../../assets/icons/arrow.svg" />
-            </div>
-          </div>
-          <div class="animal-card__block--info">
-            Краткое описание питомцаКраткое описание питомцаКраткое описание
-            питомца
-          </div>
-          
         </div>
       </div>
     </div>
   </section>
 
-  <div class="block__pagination">
-    <div class="pagination">
-      <ul>
-        <li>
-          <a class="pagination__item--side" (click)="onBackward()" title="Назад">&#60;</a>
-        </li>
-        <li>
-          <a
-            class="pagination__item"
-            (click)="onClick(1)"
-            routerLinkActive="item-active"
-            title="Страница 1"
-          >1</a
-          >
-        </li>
-        <li>
-          <a class="pagination__item" (click)="onClick(2)" title="Страница 2">2</a>
-        </li>
-        <li>
-          <a class="pagination__item" (click)="onClick(3)" title="Страница 3">3</a>
-        </li>
-        <li>
-          <a class="pagination__item" (click)="onClick(4)" title="Страница 4">4</a>
-        </li>
-        <li>
-          <a class="pagination__item" (click)="onClick(5)" title="Страница 5">5</a>
-        </li>
-        <li>
-          <a class="pagination__item" (click)="onClick(6)" title="Страница 6" >6</a>
-        </li>
-        <li>
-          <a class="pagination__item--side" (click)="onForward()" title="Вперед"
-          >&#62;</a
-          >
-        </li>
-      </ul>
-    </div>
-  </div>
+  <app-pagination (breedCards)="breedCards = $event"></app-pagination>
 
   <div class="animal-about__block">
         <span class="animal-about__text">
@@ -382,13 +127,13 @@
     </div>
     <nav>
       <ul class="nav__links-fff">
-        <li><a routerLink="/animal-page/cats/1" routerLinkActive="active-link-bottom">Кошки</a></li>
-        <li><a routerLink="/animal-page/dogs/1" routerLinkActive="active-link-bottom">Собаки</a></li>
-        <li><a routerLink="/animal-page/fish/1" routerLinkActive="active-link-bottom">Водный мир</a></li>
-        <li><a routerLink="/animal-page/birds/1" routerLinkActive="active-link-bottom">Птицы</a></li>
-        <li><a routerLink="/animal-page/rodents/1" routerLinkActive="active-link-bottom">Грызуны</a></li>
-        <li><a routerLink="/animal-page/reptiles/1" routerLinkActive="active-link-bottom">Рептилии</a></li>
-        <li><a routerLink="/animal-page/others/1" routerLinkActive="active-link-bottom">Другие питомцы</a></li>
+        <li><a routerLink="/animal-page/cats" [queryParams]="{p: '1'}" routerLinkActive="active-link"  >Кошки</a></li>
+        <li><a routerLink="/animal-page/dogs" [queryParams]="{p: '1'}" routerLinkActive="active-link"  >Собаки</a></li>
+        <li><a routerLink="/animal-page/fish" [queryParams]="{p: '1'}" routerLinkActive="active-link"  >Водный мир</a></li>
+        <li><a routerLink="/animal-page/birds" [queryParams]="{p: '1'}" routerLinkActive="active-link" >Птицы</a></li>
+        <li><a routerLink="/animal-page/rodents" [queryParams]="{p: '1'}" routerLinkActive="active-link"  >Грызуны</a></li>
+        <li><a routerLink="/animal-page/reptiles" [queryParams]="{p: '1'}" routerLinkActive="active-link"  >Рептилии</a></li>
+        <li><a routerLink="/animal-page/others" [queryParams]="{p: '1'}" routerLinkActive="active-link"  >Другие питомцы</a></li>
       </ul>
     </nav>
     <button class="up"></button>

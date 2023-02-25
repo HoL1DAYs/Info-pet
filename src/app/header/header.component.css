@@ -1,21 +1,9 @@
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-    position: absolute;
-    left: 3.8vw;
-    right: 3.8vw;
+.nav__links__black li {
+    padding: 0 20px;
 }
 
-.logo {
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-}
 
-.logo__text {
+.logo__text_black {
     font-family: Source Sans Pro;
     font-weight: 600;
     font-style: italic;
@@ -26,37 +14,43 @@
     border-bottom-width: 1px;
 }
 
-.nav__links {
-    padding: 0 20px;
+.logo__text__bottom {
+    font-family: Source Sans Pro;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 16px;
+    color: white;
+    border-bottom-style: solid;
+    border-bottom-color: #006e07;
+    border-bottom-width: 1px;
+}
+
+.nav__links__black {
     display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
     font-family: Montserrat, Arial, sans-serif;
     list-style: none;
 }
 
-.nav__links li {
-    padding: 0 20px;
+.nav__links__black a:hover {
+    text-decoration: underline;
 }
 
-.nav__links a {
+.nav__links__black a {
     font-size: 16px;
     color: #000;
     text-decoration: none;
     transition: all 0.3s ease 0s;
 }
 
-.nav__links a:hover {
-    text-decoration: underline;
-}
 
 .active-link {
-    text-decoration: underline;
-    color: #006e07;
-    background: #006e07;
+    text-decoration: underline !important;
+    color: #006e07 !important;
 }
 
-
-
-.search {
+.search_black {
     position: relative;
     width: 23px;
     height: 23px;
@@ -74,7 +68,7 @@
     background-position: 45% 50%;
 }
 
-.search:focus {
+.search_black:focus {
     width: 300px;
     height: 34px;
     cursor: text;
@@ -87,6 +81,11 @@
     background-image: none;
     background-size: 22px;
 }
+
+.search_black:focus .dropdown-content{
+    display: block;
+}
+
 
 .nav__links-fff {
     padding: 0 20px;
@@ -141,6 +140,7 @@
     background-size: 22px;
 }
 
+
 .white-title-header-up {
     text-align: center;
     font-family: Source Sans Pro;
@@ -160,3 +160,47 @@
     color: #fff;
     font-size: 16px;
 }
+
+
+#myInput {
+    box-sizing: border-box;
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 14px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    width: 318px;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+
+.dropdown-content p {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-content:focus {
+    display: block;
+}
+
+.dropdown p:hover {background-color: #ddd;}
+
+.show {display: block;}

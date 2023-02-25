@@ -1,1 +1,19 @@
+<header class="header">
+    <div class="logo">
+        <img src="assets/icons/logo.svg" alt="logo" />
+        <span [ngClass]="{logo__text: !navBlack, logo__text_black: navBlack}" routerLink="/main-page" routerLinkActive="white-header white-logo logo__text">Info-pet</span>
+    </div>
+    <nav>
+        <ul [ngClass]="{nav__links: !navBlack, nav__links__black: navBlack}">
+            <li><a routerLink="/animal-page/cats" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Кошки</a></li>
+            <li><a routerLink="/animal-page/dogs" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Собаки</a></li>
+            <li><a routerLink="/animal-page/fish" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Водный мир</a></li>
+            <li><a routerLink="/animal-page/birds" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Птицы</a></li>
+            <li><a routerLink="/animal-page/rodents" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Грызуны</a></li>
+            <li><a routerLink="/animal-page/reptiles" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Рептилии</a></li>
+            <li><a routerLink="/animal-page/others" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Другие питомцы</a></li>
+        </ul>
+    </nav>
+    <app-searchline></app-searchline>
+</header>
 
