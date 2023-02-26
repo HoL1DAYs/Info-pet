@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {RequestService} from "../request.service";
 
@@ -13,13 +13,20 @@ export class BreedPageComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private reqService: RequestService) { }
   breedInfo: any = {}
 
+  @ViewChild('FABbutton', {static: false}) fabButton: ElementRef
 
   ngOnInit(): void {
     this.reqService.getBreedById(this.route.snapshot.params['id']).subscribe(responseData => {
       this.breedInfo = responseData
       console.log(responseData)
     })
+    if (window.screenTop > 0){
+      this.fabButton.nativeElement.classList.add('fab_button_visible')
+      console.log(this.fabButton)
+    }
   }
+
+
 
 
   onScroll($event){

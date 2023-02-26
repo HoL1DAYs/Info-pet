@@ -41,7 +41,7 @@ def get_data(url):
 
             description = soup.find('div', class_='pet-prew').find('p').text
             info = soup.find('h2', id='info').findNext().findAll('li')
-            info_name = soup.find('h2', id='info').findNext().find('li').text.split(':')[1].strip()
+            info_name = soup.find('h2', id='info').findNext().find('li').text.split(':')[1].strip().lower()
 
             character = soup.find('h2', id='gl3').findNext().text + soup.find('h2', id='gl3').findNext().findNext('p').text + soup.find('h2', id='gl3').findNext().findNext('p').findNext('p').text
             training = soup.find('h2', id='gl4').findNext().text + soup.find('h2', id='gl4').findNext().findNext('p').text + soup.find('h2', id='gl4').findNext().findNext('p').findNext('p').text + \
@@ -60,58 +60,10 @@ def get_data(url):
                 for i in info:
                     key = i.text.split(':')[0]
                     value = i.text.split(':')[1].strip()
-                    print(key, value)
                     connection.execute(text(f"insert into infopet.breeds_parameters(breed_id, parameter, value) values('{breedId}' ,'{key}', '{value}' )"))
         except AttributeError:
             pass
 
-
-    filters_list = ['Все породы',
-                     'Большие',
-                     'Маленькие',
-                     'Ретривер',
-                     'спаниели',
-                     'Средние',
-                     'Сторожевые',
-                     'Охотничьи',
-                     'Примитивные',
-                     'Водяные',
-                     'Бойцовские',
-                     'Гончие',
-                     'Служебные',
-                     'Шпицы',
-                     'Овчарки',
-                     'Борзые',
-                     'Пушистые',
-                     'Лысые',
-                     'Злые',
-                     'Японские',
-                     'Русские',
-                     'Пастушьи',
-                     'Гладкошорстные',
-                     'Умные',
-                     'Спокойные',
-                     'Немецкие',
-                     'Американские',
-                     'Комнотно-декоротивны',
-                     'Кудрявые',
-                     'Добрые',
-                     'Опасные',
-                     'Английские',
-                     'Французкие',
-                     'Терьеры',
-                     'Легавые',
-                     'Неохотничьи',
-                     'Недорогие',
-                     'Дорогие',
-                     'Новые']
-    for filter in filters_list:
-        connection.execute(text(f"insert into infopet.filters(filter_name) values('{filter}')"))
-    connection.commit()
-
-    for i in range(4):
-        for j in range(3):
-            connection.execute(text(f"insert into infopet.breed_filters(breed_id, filters_id) values('{i+1}', '{j+1}')"))
 
     connection.commit()
 
