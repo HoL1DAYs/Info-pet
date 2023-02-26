@@ -80,12 +80,13 @@ export class AnimalPageComponent implements OnInit {
           this.breedCards = responseData.content
           console.log(responseData)
           console.log(this.route.snapshot.queryParams.filters)
+
         }
     )
 
 
     if (this.route.snapshot.queryParams.filters){
-      this.reqService.fetchData(0, this.route.snapshot.queryParams.filters).subscribe(res => this.breedCards = res.content)
+      this.reqService.fetchData(this.number-1, this.route.snapshot.queryParams.filters).subscribe(res => this.breedCards = res.content)
     }
 
 
@@ -97,15 +98,23 @@ export class AnimalPageComponent implements OnInit {
 
   appendToFilters(i, filtersFromIter){
     if (this.filters.includes(filtersFromIter)){
+      const filtersArray = this.filtersArray.nativeElement.childNodes
+      filtersArray[(i)].classList.remove('btn_active')
+      // disabling filter
       delete this.filters[this.filters.indexOf(filtersFromIter)]
       console.log(this.filters)
       this.filters = this.filters.filter(String)
       console.log(this.filters)
       this.reqService.fetchData(this.number-1).subscribe(response => this.breedCards = response.content)
     } else{
+      // enabling filter
       this.filters.push(filtersFromIter)
       console.log(this.filters)
       this.reqService.fetchData(this.number-1).subscribe(response => this.breedCards = response.content)
+      // adding css class on filterButtons
+      const filtersArray = this.filtersArray.nativeElement.childNodes
+      console.log(filtersArray[(i)])
+      filtersArray[(i)].classList.add('btn_active')
     }
 
 
@@ -137,6 +146,10 @@ export class AnimalPageComponent implements OnInit {
   emptyFilters(){
     this.filters = []
     this.router.navigate(['./'],{relativeTo: this.route, queryParams: {p: this.number, filters: this.filters}})
+    const filtersArray = this.filtersArray.nativeElement.childNodes
+    for (let k = 0; k < this.visibleFilters.length; k++) {
+      filtersArray[(k)].classList.remove('btn_active')
+    }
     this.reqService.fetchData(this.number-1).subscribe(response => this.breedCards = response.content)
   }
 

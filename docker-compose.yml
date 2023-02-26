@@ -25,6 +25,12 @@ services:
     depends_on:
       - postgres
 
+  python_insert_filters_script:
+    build: ./script2
+    container_name: 'infopet-script2'
+    depends_on:
+      - python_script
+
 
 
 volumes:

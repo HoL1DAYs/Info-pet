@@ -131,6 +131,26 @@
     font-size: 16px;
 }
 
+.fab_button {
+    position: fixed;
+    right: 55px;
+    bottom: 55px;
+    display: flex;
+    opacity: 0;
+}
+
+.fab_button_visible{
+    opacity: 1;
+}
+
+.fab_button button {
+    justify-content: center;
+    align-items: center;
+    border-radius: 28px;
+    width: 96px;
+    height: 96px;
+    background-color: rgba(0, 110, 7, 0.11);
+}
 
 
 

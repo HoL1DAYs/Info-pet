@@ -290,9 +290,11 @@ search:focus .dropdown-content {
   flex-wrap: wrap;
 }
 .disable__filters__button{
+  margin-left: 55px;
   display: inline-flex;
   align-items: center;
   justify-items: center;
+  height: 89.63px;
 }
 
 .disable__filters__button button{
@@ -320,6 +322,11 @@ search:focus .dropdown-content {
 
 .filter__button:hover,
 .filter__button .btn__clicked {
+  background-color: #006e07;
+  color: #fff;
+}
+
+.btn_active{
   background-color: #006e07;
   color: #fff;
 }

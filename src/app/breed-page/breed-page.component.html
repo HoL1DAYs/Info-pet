@@ -23,6 +23,11 @@
 
   <section class="animal-content">
     <img class="animal-breed__image" src="{{breedInfo.thumbnail_url}}" height="700"/>
+    <div class="fab_button" #FABbutton>
+      <button>
+        <img src="assets/icons/icon.svg">
+      </button>
+    </div>
 
     <div class="animal-breed-text__block">
       <div class="navigation--breed">
@@ -42,30 +47,11 @@
           <td class="table--attribute">Название породы</td>
           <td class="table--value">{{(breedInfo.breed | slice: 0:1 | uppercase) + (breedInfo.breed | slice: 1)}}</td>
         </tr>
-        <tr>
-          <td class="table--attribute">{{breedInfo.parameters}}</td>
-          <td class="table--value">{{breedInfo.value}}</td>
+        <tr *ngFor="let parameters of breedInfo.parameters">
+          <td class="table--attribute">{{parameters.parameter}}</td>
+          <td class="table--value">{{parameters.value}}</td>
         </tr>
-        <tr>
-          <td class="table--attribute">Время появления породы</td>
-          <td class="table--value">1964 год</td>
-        </tr>
-        <tr>
-          <td class="table--attribute">Тип породы</td>
-          <td class="table--value">Собака-команьон</td>
-        </tr>
-        <tr>
-          <td class="table--attribute">Вес взрослой собаки</td>
-          <td class="table--value">32-45 кг (самки), 40-45 кг (самцы)</td>
-        </tr>
-        <tr>
-          <td class="table--attribute">Рост</td>
-          <td class="table--value">58-64 см (самки), 64-70 см (самцы)</td>
-        </tr>
-        <tr>
-          <td class="table--attribute">Сколько живут</td>
-          <td class="table--value">10-12 лет</td>
-        </tr>
+
       </table>
       <h2 class="animal-breed--subtittle">Характер</h2>
       <p class="animal-breed--about">
