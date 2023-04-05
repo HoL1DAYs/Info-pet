@@ -26,11 +26,11 @@ export class SearchlineComponent {
   }
 
 
-  disableDropdown($event){
+  disableDropdown(){
     setTimeout(()=>{
       this.toggleDropdown = false;
       this.inputField.nativeElement.value = '';
-    }, 220)
+    }, 70)
   }
 
 

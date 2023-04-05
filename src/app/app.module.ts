@@ -12,6 +12,10 @@ import { HeaderComponent } from './header/header.component';
 import {SearchlineComponent} from "./header/searchline/searchline.component";
 import { FilterPipe } from './animal-page/filter.pipe';
 import { PaginationComponent } from './animal-page/pagination/pagination.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { FooterComponent } from './footer/footer.component';
+
+
 
 
 @NgModule({
@@ -24,6 +28,9 @@ import { PaginationComponent } from './animal-page/pagination/pagination.compone
         SearchlineComponent,
         FilterPipe,
         PaginationComponent,
+        ErrorPageComponent,
+        FooterComponent,
+
     ],
   imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   bootstrap: [AppComponent],

@@ -12,7 +12,6 @@ export class FilterPipe implements PipeTransform {
       for (const filter of currentFilters){
         if (breed.filters.includes(filter)){
           isTrue.push(true)
-          console.log(isTrue)
         }else {
           isTrue.push(false)
         }

@@ -57,7 +57,7 @@
     border-radius: 50%;
     transition-duration: 500ms;
     cursor: pointer;
-    background-color: transparent;
+    background-color: white;
     font-family: Montserrat, Arial, sans-serif;
     font-size: 0;
     border: none;
@@ -175,7 +175,9 @@
 #myInput:focus {outline: 3px solid #ddd;}
 
 .dropdown {
-    position: relative;
+    position: absolute;
+    right: 0px;
+    top: 23px
 }
 
 .dropdown-content {
@@ -201,6 +203,6 @@
     display: block;
 }
 
-.dropdown p:hover {background-color: #ddd;}
+.dropdown .search_bread_card:hover {background-color: #ddd;}
 
 .show {display: block;}

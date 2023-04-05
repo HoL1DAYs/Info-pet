@@ -13,7 +13,7 @@ def get_data(url):
         'Accept': '*/*',
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
     }
-    engine = sqlalchemy.create_engine('postgresql+psycopg2://postgres@postgres:5432/postgres')
+    engine = sqlalchemy.create_engine('postgresql+psycopg2://postgres@postgres:5432/postgres', echo=True)
     connection = engine.connect()
     trans = connection.begin()
 
@@ -50,7 +50,7 @@ def get_data(url):
 
 
 
-            push = f"insert into infopet.breeds(animal_id ,breed_name, img_url, subtitle, character, training, care) values('1' ,'{breedName}', '{imgUrl}', '{description}', '{character}', '{training}', '{care}')"
+            push = f"insert into infopet.breeds(animal_id ,breed_name, img_url, subtitle, character, training, care) values('2' ,'{breedName}', '{imgUrl}', '{description}', '{character}', '{training}', '{care}')"
             statement = text(push)
             connection.execute(statement)
             connection.commit()
@@ -66,6 +66,7 @@ def get_data(url):
 
 
     connection.commit()
+    connection.close()
 
 
 
@@ -75,7 +76,9 @@ def get_data(url):
 
 
 def main():
-    get_data('https://lapkins.ru/dog/')
+
+    get_data('https://lapkins.ru/cat/')
+
 
 
 if __name__ == '__main__':

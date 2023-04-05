@@ -1,0 +1,36 @@
+<footer class="footer">
+    <div class="footer__up">
+        <div class="logo">
+            <img src="assets/icons/logo.svg" alt="logo" />
+            <span class="logo__text" routerLink="/main-page">Info-pet</span>
+        </div>
+        <nav>
+            <ul class="nav__links">
+                <li><a routerLink="/animal-page/cats" [queryParams]="{p: '1'}">Кошки</a></li>
+                <li><a routerLink="/animal-page/dogs" [queryParams]="{p: '1'}">Собаки</a></li>
+                <li><a routerLink="/animal-page/fish" [queryParams]="{p: '1'}">Водный мир</a></li>
+                <li><a routerLink="/animal-page/birds" [queryParams]="{p: '1'}">Птицы</a></li>
+                <li><a routerLink="/animal-page/rodents" [queryParams]="{p: '1'}">Грызуны</a></li>
+                <li><a routerLink="/animal-page/reptiles" [queryParams]="{p: '1'}">Рептилии</a></li>
+                <li><a routerLink="/animal-page/others" [queryParams]="{p: '1'}">Другие питомцы</a></li>
+            </ul>
+        </nav>
+        <button class="up"></button>
+    </div>
+
+    <div class="footer__down">
+        <ul class="footer__nav__links">
+            <li>2022-2023</li>
+            <li>
+                <a href="#">
+                    ссылка на бесплатные источники иллюстраций, логотипа, картинок
+                </a>
+            </li>
+            <li><a href="#">Политика сайта</a></li>
+            <li><a href="#">Реклама на сайте</a></li>
+            <li><a href="#">Контакты</a></li>
+            <li><a href="#">Правовая информация</a></li>
+        </ul>
+    </div>
+</footer>
+

@@ -2,6 +2,13 @@
   padding: 0;
   margin: 0;
 }
+.html{
+  height: 100vh;
+}
+
+.body{
+  height: 100vh;
+}
 
 .section__title {
   background-image: url(/assets/img/bg.jpg);
@@ -76,7 +83,6 @@
   border-radius: 50%;
   transition-duration: 500ms;
   cursor: pointer;
-  background-color: transparent;
   font-family: Montserrat, Arial, sans-serif;
   font-size: 0;
   border: none;
@@ -85,6 +91,7 @@
   background-repeat: no-repeat;
   background-size: 22px;
   background-position: 45% 50%;
+  background-color: white;
 }
 
 .search:focus {
@@ -103,6 +110,11 @@
 search:focus .dropdown-content {
   display: block;
 }
+.search:focus .close-search-button{
+  opacity: 1;
+}
+
+
 
 .title__header-up {
   text-align: center;
@@ -133,7 +145,7 @@ search:focus .dropdown-content {
 }
 
 .under:hover {
-  animation: UpDown 0.7s linear infinite;
+  animation: UpDown 0.75s linear;
 }
 
 @keyframes UpDown {
@@ -147,7 +159,7 @@ search:focus .dropdown-content {
 }
 
 .title-about-site {
-  background-color: #dfe4d8;
+  background-color: #F8F9F7;
   font-size: 14px;
   padding: 4vh 12vw;
   font-family: Montserrat;
@@ -166,7 +178,7 @@ search:focus .dropdown-content {
   justify-content: center;
   padding-left: 3vw;
   padding-right: 5vw;
-
+  background-color: #EEF4EC;
 }
 
 
@@ -175,7 +187,7 @@ search:focus .dropdown-content {
   font-weight: 400;
   font-style: italic;
   font-size: 52px;
-  border-bottom: 2px solid #006e07;
+  color: #006E07
 
 }
 
@@ -194,7 +206,7 @@ search:focus .dropdown-content {
   color: #006e07;
   border: 1px solid #006e07;
   border-radius: 100px;
-  background: #E8F2FA;
+  background: #EEF4EC;
 
   font-size: 14px;
   font-weight: 500;
@@ -267,6 +279,7 @@ search:focus .dropdown-content {
   border-radius: 16px;
   border: none;
   cursor: pointer;
+  opacity: 0;
 }
 
 .animal__content__block {
@@ -278,16 +291,19 @@ search:focus .dropdown-content {
   font-size: 64px;
   font-weight: 400;
   font-style: italic;
-  padding-top: 13vh;
+  padding-top: 11vh;
+  white-space: nowrap;
 }
 
 .filter__buttons {
   padding-top: 2vh;
-  padding-bottom: 2vh;
+  padding-bottom: 1vh;
   display: inline-flex;
-  align-items: start;
-  justify-content: start;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-wrap: wrap;
+  margin-left: 10vw;
+  margin-right: 10vw;
 }
 .disable__filters__button{
   margin-left: 55px;
@@ -295,6 +311,7 @@ search:focus .dropdown-content {
   align-items: center;
   justify-items: center;
   height: 89.63px;
+  padding-top: 11vh;
 }
 
 .disable__filters__button button{
@@ -308,8 +325,8 @@ search:focus .dropdown-content {
 
 
 .filter__button {
-  margin: 5px 9px;
-  padding: 10px 16px;
+  margin: 5px 4px;
+  padding: 6px 16px;
   background-color: inherit;
   color: #797979;
   font-size: 14px;
@@ -349,6 +366,7 @@ search:focus .dropdown-content {
   margin-top: 4vh;
   grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   gap: 30px;
+  margin-bottom: 2vh;
 }
 
 .animal-card__block {
@@ -360,7 +378,8 @@ search:focus .dropdown-content {
 }
 
 .animal-card__block:hover .arrow-1 {
-  animation: arrow-1 1s linear infinite;
+  /*animation: arrow-1 1s linear ;*/
+  padding-left: 15px;
 }
 
 .animal-card__block:hover .scale img {
@@ -379,6 +398,7 @@ search:focus .dropdown-content {
 .animal-card--image {
   object-fit: cover;
   width: 100%;
+  height: 210px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
@@ -407,21 +427,24 @@ search:focus .dropdown-content {
 
 
 .animal-card__block--about {
-  margin: 10px 15px;
+  margin-top: 18px;
 }
 
 .animal-card__block--name {
   display: inline-grid;
+  padding-left: 22px;
+  padding-right: 22px;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
   font-size: 15px;
   font-family: "Source Sans Pro", Arial;
   font-weight: 600;
   font-style: italic;
+  white-space: nowrap;
 }
 
 .animal-card__block--info {
-  padding: 10px 0;
+  padding: 10px 22px 10px 22px;
   font-size: 14px;
   font-family: "Montserrat";
   font-weight: 400;
@@ -471,9 +494,9 @@ search:focus .dropdown-content {
 .pagination {
   width: 100%;
   text-align: center;
-  padding: 10px;
+  padding: 22px 10px 46px 10px;
   margin-top: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .pagination ul li {
@@ -492,7 +515,7 @@ search:focus .dropdown-content {
 
   border: 1px solid #000;
   border-radius: 50%;
-
+  margin-bottom: 10px;
   height: 28px;
   width: 28px;
   line-height: 28px;
@@ -500,6 +523,7 @@ search:focus .dropdown-content {
 
 .pagination__item--side {
   text-decoration: none;
+  margin-top: 10px;
 }
 
 .pagination__item:hover {
@@ -557,7 +581,7 @@ search:focus .dropdown-content {
 }
 
 .animal-breed-text__block {
-  margin: 7vh 12vw;
+  margin: 7vh 12vw 4vh 12vw;
 }
 
 .animal-breed--subtittle {
@@ -566,7 +590,6 @@ search:focus .dropdown-content {
   font-weight: 400;
   font-style: italic;
   line-height: 46px;
-  padding-top: 40px;
 }
 .animal-breed--subtittle h2 {
   padding-top: 0;
@@ -574,7 +597,7 @@ search:focus .dropdown-content {
 
 .animal-breed--navigation {
   list-style-image: url(/assets/icons/dot.svg);
-  padding: 10px 0 5px 5px;
+  padding: 10px 0 24px 24px;
 }
 
 .animal-breed--navigation li {
@@ -596,6 +619,7 @@ search:focus .dropdown-content {
   font-size: 17px;
   font-weight: 400;
   font-style: italic;
+  padding: 10px;
 }
 
 .table--value {
@@ -619,6 +643,7 @@ search:focus .dropdown-content {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr;
+
   /*grid-template-columns: repeat(auto-fit, minmax(262px, 1fr));*/
 }
 
@@ -637,12 +662,12 @@ search:focus .dropdown-content {
 }
 
 .subtittle--margin {
-  margin: 40px 12vw 25px;
+  margin: 56px 12vw 34px;
 }
 
 .animal-breed__grid--recomendation {
   display: grid;
-  margin-bottom: 40px;
+  margin-bottom: 56px;
   grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   gap: 20px;
 }
@@ -655,6 +680,7 @@ search:focus .dropdown-content {
 .arrow-1 {
   cursor: pointer;
   position: relative;
+  transition: 500ms;
 }
 
 
@@ -672,5 +698,8 @@ search:focus .dropdown-content {
 
 .navigation--breed {
   background: #E8F2FA;
-  padding: 24px;
+  border-radius: 12px;
+  padding-left: 24px;
+  padding-top: 24px;
+  margin-bottom: 40px;
 }
