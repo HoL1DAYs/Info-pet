@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {RequestService} from "../request.service";
 import {BreedCard} from "./breedCard.model";
+import {map} from "rxjs/operators";
 
 
 
@@ -13,10 +14,10 @@ import {BreedCard} from "./breedCard.model";
 export class AnimalPageComponent implements OnInit {
 
   @ViewChild('filtersArray', {static: false}) filtersArray: ElementRef
+  @ViewChild('breeds', {static: false}) breeds: ElementRef
+  countMoreBreeds: number = 1;
 
   constructor(private router: Router, private route: ActivatedRoute, private reqService: RequestService) { }
-
-
 
 
   number: number;
@@ -24,52 +25,12 @@ export class AnimalPageComponent implements OnInit {
   filterActive: boolean = false;
   filters: string[] = [];
   filtersPage: string[];
-
-
-
   toggleFilters: boolean = false;
-  filtersList: string[] = ['Все породы',
-    'Большие',
-    'Маленькие',
-    'Ретривер',
-    'спаниели',
-    'Средние',
-    'Сторожевые',
-    'Охотничьи',
-    'Примитивные',
-    'Водяные',
-    'Бойцовские',
-    'Гончие',
-    'Служебные',
-    'Шпицы',
-    'Овчарки',
-    'Борзые',
-    'Пушистые',
-    'Лысые',
-    'Злые',
-    'Японские',
-    'Русские',
-    'Пастушьи',
-    'Гладкошорстные',
-    'Умные',
-    'Спокойные',
-    'Немецкие',
-    'Американские',
-    'Комнотно-декоротивны',
-    'Кудрявые',
-    'Добрые',
-    'Опасные',
-    'Английские',
-    'Французкие',
-    'Терьеры',
-    'Легавые',
-    'Неохотничьи',
-    'Недорогие',
-    'Дорогие',
-    'Новые']
-
-
+  filtersList: string[]
   visibleFilters: string[];
+  totalPages: number;
+  loaded: boolean = false;
+  allShowed: boolean
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
@@ -78,69 +39,78 @@ export class AnimalPageComponent implements OnInit {
     )
     this.reqService.fetchData(this.number-1).subscribe(responseData => {
           this.breedCards = responseData.content
-          console.log(responseData)
-          console.log(this.route.snapshot.queryParams.filters)
+          console.log(responseData.totalPages)
+          this.totalPages = +responseData.totalElements / 12
 
+          this.loaded = true
+          console.log(responseData)
         }
     )
 
+    this.reqService.getAnimalsById(1).pipe(map(res => {
+      const filterArray = []
+      for (let filter of res.filters){
+        filterArray.push(filter.filter)
+      }
+      return filterArray
+    })).subscribe(res => {
+      this.filtersList = res
+      this.visibleFilters = this.filtersList.slice(0,11)
+      console.log(res)
+    })
+
 
     if (this.route.snapshot.queryParams.filters){
-      this.reqService.fetchData(this.number-1, this.route.snapshot.queryParams.filters).subscribe(res => this.breedCards = res.content)
+      this.reqService.fetchData(this.number-1).subscribe(res => {
+        this.breedCards = res.content;
+        this.totalPages = +res.totalPages / 12
+        console.log(this.totalPages)
+        this.loaded = true
+      })
     }
 
 
-
-    this.visibleFilters = this.filtersList.slice(0,8)
   }
 
 
 
   appendToFilters(i, filtersFromIter){
     if (this.filters.includes(filtersFromIter)){
+
+
       const filtersArray = this.filtersArray.nativeElement.childNodes
       filtersArray[(i)].classList.remove('btn_active')
+
       // disabling filter
+      console.log(this.filters.indexOf(filtersFromIter))
+      console.log(filtersFromIter)
       delete this.filters[this.filters.indexOf(filtersFromIter)]
-      console.log(this.filters)
+
       this.filters = this.filters.filter(String)
+
       console.log(this.filters)
-      this.reqService.fetchData(this.number-1).subscribe(response => this.breedCards = response.content)
+      this.reqService.fetchData(this.number-1, 2).subscribe(responseData => {
+        this.breedCards = responseData.content
+        this.totalPages = +responseData.totalPages / 12
+        this.loaded = true
+        console.log(responseData)
+      })
     } else{
       // enabling filter
       this.filters.push(filtersFromIter)
       console.log(this.filters)
-      this.reqService.fetchData(this.number-1).subscribe(response => this.breedCards = response.content)
+      this.reqService.fetchData(this.number-1, 2).subscribe(responseData => {
+        this.breedCards = responseData.content
+        this.totalPages = +responseData.totalElements / 12
+        this.loaded = true
+        console.log(responseData)
+      })
       // adding css class on filterButtons
       const filtersArray = this.filtersArray.nativeElement.childNodes
-      console.log(filtersArray[(i)])
+      this.visibleFilters.unshift(this.filters[this.filters.indexOf(filtersFromIter)])
+      this.visibleFilters.splice(i + 1, 1)
       filtersArray[(i)].classList.add('btn_active')
     }
-
-
-    // this.filtersPage.push(filtersFromIter)
-    //
-    // if (this.filters.includes(i)){
-    //   delete this.filters[this.filters.indexOf(i)]
-    //   this.filters = this.filters.filter(Number)
-    //   console.log(this.filters)
-    //   let filterString = this.filters.toString()
-    //   if (filterString.length < 1){
-    //     filterString = null
-    //     this.reqService.fetchData(this.number).subscribe(response => this.breedCards = response.content)
-    //   }
-    //   this.router.navigate(['./'],{relativeTo: this.route, queryParams: {p: this.number, filters: filterString}})
-    //   this.reqService.fetchData(this.number, filterString).subscribe(response => this.breedCards = response.content)
-    // } else{
-    //   this.filters.push(filtersFromIter)
-    //   console.log(this.filters)
-    //   // this.filters = this.filters.filter(Number)
-    //   let filtersString = this.filters.toString()
-    //   console.log(filtersString)
-    //   this.router.navigate(['./'],{relativeTo: this.route, queryParams: {p: this.number, filters: filtersString}})
-    //   this.reqService.fetchData(this.number, filtersString).subscribe(response => this.breedCards = response.content)
-    // }
-
   }
 
   emptyFilters(){
@@ -155,19 +125,25 @@ export class AnimalPageComponent implements OnInit {
 
 
 
-  onMain(){
-    this.router.navigate(['main-page'])
-  }
-
-
   allFilters(){
     this.toggleFilters = !this.toggleFilters
     if (this.toggleFilters === false) {
-      this.visibleFilters = this.filtersList.slice(0, 8)
+      this.visibleFilters = this.filtersList.slice(0, 11)
     } else{
       this.visibleFilters = this.filtersList
     }
   }
+  
+  showMoreBreeds(){
+    if (this.countMoreBreeds >= Math.floor(this.totalPages)){
+      this.allShowed = true;
+      return
+    }
+
+    this.countMoreBreeds += 1
+
+  }
+
 
 
 }

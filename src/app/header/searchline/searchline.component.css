@@ -1,5 +1,9 @@
 .search_bread_card{
+    display: flex;
     grid-template-columns: 50px 250px;
+    padding: 0;
+    pointer-events: stroke;
+    cursor: pointer;
 }
 img{
     width: 50px;
@@ -7,26 +11,42 @@ img{
     border-radius: 25px;
     display: inline-flex;
 }
-a{
-    display: block;
-    justify-items: center;
-    align-items: center;
 
-}
 .search_bread_card-div{
+    flex: 1;
     display: inline-flex;
     justify-items: center;
     align-items: center;
-
+    padding-left: 0;
+    padding-right: 0;
 
 }
 .search_bread_card-img{
-    margin: auto;
     display: inline-flex;
     justify-items: center;
     align-items: center;
     vertical-align: middle;
-    margin-bottom: 5px;
     margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 0px;
+}
 
+.close-search-button{
+    z-index: 1000;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    display: none;
+    background-color: white;
+    border: none;
+    pointer-events: none;
+}
+.close-search-button img{
+    width: 20px;
+    height: 20px;
+}
+
+.close-search-button_visible{
+    display: block;
 }

@@ -15,28 +15,16 @@ export class RequestService{
         return this.http.get<any>(`//localhost:8080/api/v1/breeds/${id}?size=12`)
     }
 
-    fetchData(pageNumber?, filters?){
-        if (filters != null && pageNumber!= null){
-            return this.http.get<ResponseDataModel>(`//localhost:8080/api/v1/1/breeds?size=12&page=0&filters=${filters}`)
-        }
-        if(pageNumber!=null){
-            return this.http.get<ResponseDataModel>(`//localhost:8080/api/v1/1/breeds?size=12&page=${pageNumber}`)
-        }
-
-        return this.http.get<ResponseDataModel>('//localhost:8080/api/v1/1/breeds?size=12')
-
-        //     .pipe(map(responseData => {
-        //     // const postArray: BreedCard[] = [];
-        //     // for (const key in responseData){
-        //     //     if (responseData.hasOwnProperty(key)){
-        //     //         postArray.push({...responseData[key], id: key})
-        //     //     }
-        //     // }
-        //     // return postArray
-    // }))
+    fetchData(pageNumber?, animal_id?, filter?){
+        return this.http.get<ResponseDataModel>(`//localhost:8080/api/v1/1/breeds?size=156&page=${pageNumber}`)
     }
 
     getByQuery(query){
         return this.http.get<any>(`//localhost:8080/api/v1/breeds?q=${query}`)
     }
+
+    getAnimalsById(id){
+        return this.http.get<any>(`//localhost:8080/api/v1/animal/${id}`)
+    }
+
 }

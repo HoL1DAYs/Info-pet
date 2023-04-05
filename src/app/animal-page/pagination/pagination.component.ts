@@ -10,6 +10,7 @@ import {BreedCard} from "../breedCard.model";
 })
 export class PaginationComponent {
     number: number;
+    viewPage: number = 0;
     @Output() breedCards = new EventEmitter
     @ViewChild('paginationItems', {static: false}) paginationItem: ElementRef
 
@@ -29,19 +30,34 @@ export class PaginationComponent {
     onClick(number: number) {
         this.router.navigate(['/animal-page', this.route.snapshot.params['animal']], {queryParams: {p: number}})
         this.number = number
-        this.reqService.fetchData(this.number - 1).subscribe(responseData => {
-            this.breedCards.emit(responseData.content)
-        })
+        if (this.number >= 3){
+            this.viewPage = this.number - 3
+        }
+
         const paginationItemList = this.paginationItem.nativeElement.childNodes
         for (let k = 0; k < 8; k++) {
             paginationItemList[(k)].firstChild.classList.remove('item-active')
         }
-        paginationItemList[(+number)].firstChild.classList.add('item-active')
+        paginationItemList[(+number - this.viewPage)].firstChild.classList.add('item-active')
+
+
+        this.reqService.fetchData(this.number - 1).subscribe(responseData => {
+            this.breedCards.emit(responseData.content)
+        })
     }
 
 
     onForward() {
         this.number = +this.number + 1;
+        if (this.number >= 3){
+            this.viewPage = this.number - 3;
+            const paginationItemList = this.paginationItem.nativeElement.childNodes
+            for (let k = 0; k < 6; k++) {
+                paginationItemList[(k)].firstChild.classList.remove('item-active')
+            }
+            paginationItemList[(+this.number - 1)].firstChild.classList.add('item-active')
+        }
+
         this.router.navigate(['/animal-page', this.route.snapshot.params['animal']], {queryParams: {p: this.number}})
         this.reqService.fetchData(this.number - 1).subscribe(responseData => {
             this.breedCards.emit(responseData.content)
@@ -57,6 +73,14 @@ export class PaginationComponent {
         this.number = +this.number - 1;
         if (this.number < 1) {
             this.number = 1
+        }
+        if (this.number >= 3){
+            this.viewPage = this.number - 3
+            const paginationItemList = this.paginationItem.nativeElement.childNodes
+            for (let k = 0; k < 6; k++) {
+                paginationItemList[(k)].firstChild.classList.remove('item-active')
+            }
+            paginationItemList[(+this.number - 1)].firstChild.classList.add('item-active')
         }
         this.router.navigate(['/animal-page', this.route.snapshot.params['animal']], {queryParams: {p: this.number}})
         this.reqService.fetchData(this.number - 1).subscribe(responseData => {

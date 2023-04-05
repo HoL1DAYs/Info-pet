@@ -14,7 +14,7 @@ def get_data(url):
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
     }
 
-    engine = sqlalchemy.create_engine('postgresql+psycopg2://postgres@postgres:5432/postgres')
+    engine = sqlalchemy.create_engine('postgresql+psycopg2://postgres@postgres:5432/postgres', pool_pre_ping=True)
     connection = engine.connect()
     trans = connection.begin()
 

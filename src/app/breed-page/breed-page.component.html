@@ -1,205 +1,131 @@
 <body>
-<div class="animal__content__block">
-  <!-- HEADER WITH NAVIGATION-->
+    <div class="animal__content__block" id="header">
+        <!-- HEADER WITH NAVIGATION-->
 
-  <!-- BLOCK WITH RELATIVE ADDRESS-->
-  <div class="relative-address__block">
-    <p class="relative-address">
-      <span (click)="onMain()">Главная / </span>
-      <span (click)="onAnimal()">Собаки / </span>
-      <span class="relative-address--current">Бульдог</span>
-    </p>
-  </div>
-
-  <!-- BLOCK WITH BREED NAME AND FILTERS-->
-  <div class="animal-name-filters">
-    <h1 class="animal__name">{{(breedInfo.breed | slice: 0:1 | uppercase) + (breedInfo.breed | slice: 1)}}</h1>
-    <div class="animal-name--filters">
-      <button class="animal-card__filters__btn">Умные</button>
-      <button class="animal-card__filters__btn">Повадыри</button>
-      <button class="animal-card__filters__btn">Бойцовские</button>
-    </div>
-  </div>
-
-  <section class="animal-content">
-    <img class="animal-breed__image" src="{{breedInfo.thumbnail_url}}" height="700"/>
-    <div class="fab_button" #FABbutton>
-      <button>
-        <img src="assets/icons/icon.svg">
-      </button>
-    </div>
-
-    <div class="animal-breed-text__block">
-      <div class="navigation--breed">
-        <h2 class="animal-breed--subtittle">Содержание:</h2>
-        <ul class="animal-breed--navigation">
-          <li (click)="onScroll($event)">Краткая информация</li>
-          <li (click)="onScroll($event)">Характер</li>
-          <li (click)="onScroll($event)">Воспитание</li>
-          <li (click)="onScroll($event)">Питание</li>
-          <li (click)="onScroll($event)">Уход</li>
-          <li (click)="onScroll($event)">Фотографии</li>
-        </ul>
-      </div>
-      <h2 class="animal-breed--subtittle">Краткая информация</h2>
-      <table class="animal-breed__table--short-info">
-        <tr>
-          <td class="table--attribute">Название породы</td>
-          <td class="table--value">{{(breedInfo.breed | slice: 0:1 | uppercase) + (breedInfo.breed | slice: 1)}}</td>
-        </tr>
-        <tr *ngFor="let parameters of breedInfo.parameters">
-          <td class="table--attribute">{{parameters.parameter}}</td>
-          <td class="table--value">{{parameters.value}}</td>
-        </tr>
-
-      </table>
-      <h2 class="animal-breed--subtittle">Характер</h2>
-      <p class="animal-breed--about">
-        {{breedInfo.character}}
-      </p>
-      <h2 class="animal-breed--subtittle">Воспитание</h2>
-      <p class="animal-breed--about">
-        {{breedInfo.training}}
-      </p>
-      <h2 class="animal-breed--subtittle">Питание</h2>
-      <p class="animal-breed--about">
-        Австралийская борзая (кенгуровая) собака представляет собой крупную
-        борзую, телосложение мускулистое, ростом выше английских борзых.
-        Формат прямоугольный, собака длинная и сильная.Голова широкая, морда
-        сужается вниз. Мощная грудная клетка, глубокая и с округлыми
-        ребрами. Шея должна быть достаточно длинная, чтобы подобрать
-        кролика, а также сильная, чтобы держать большую дичь. Плечи сильно
-        отведены назад. Конечности стройные, крепкие и прямые. Тонкий,
-        длинный и очень гибкий хвост. Движения легкие, активные, с длинным
-        большим шагом.Глаза темные, форма миндалевидная, зрение
-        превосходное. Австралийская борзая отлично видит добычу на дальнем
-        расстоянии. Челюсти сильные, клыки острые, прикус может быть ровным
-        или ножницеобразным.Шерсть австралийских борзых может быть трех
-        видов – первый напоминает шерсть классических дирхаундов, то есть
-        короткий, жесткий, второй вид, гладкая грубоватая шерсть как у
-        грейхаундов и третий вид – это смесь из двух первых: короткая,
-        гладкая, жесткая
-      </p>
-      <h2 class="animal-breed--subtittle">Уход</h2>
-      <p class="animal-breed--about">
-        {{breedInfo.care}}
-      </p>
-      <h2 class="animal-breed--subtittle">Фотографии</h2>
-    </div>
-  </section>
-</div>
-  <div class="animal-breed--photo-gallery">
-    <div class="vertical-grid">
-      <div class="scale">
-        <img class="photo-gallery--element" src="assets/img/pets/mp-1.jpg" />
-      </div>
-    </div>
-    <div class="horisontal-grid">
-      <div class="scale">
-        <img class="photo-gallery--element" src="assets/img/pets/mp-2.jpg" />
-      </div>
-      <div class="scale">
-        <img class="photo-gallery--element" src="assets/img/pets/mp-3.jpg" />
-      </div>
-      <div class="scale">
-        <img class="photo-gallery--element" src="assets/img/pets/mp-5.jpg" />
-      </div>
-      <div class="scale">
-        <img class="photo-gallery--element" src="assets/img/pets/mp-4.jpg" />
-      </div>
-    </div>
-  </div>
-<div class="animal__content__block">
-
-  <h2 class="animal-breed--subtittle subtittle--margin">
-    ВАМ ТАКЖЕ МОЖЕТ БЫТЬ ИНТЕРЕСНО:
-  </h2>
-
-  <div class="animal-breed__grid--recomendation">
-    <div class="animal-card__block scale">
-      <div class="animal-card__block--image scale">
-        <img class="animal-card--image" src="assets/img/pets/01.jpg" />
-      </div>
-      <div class="animal-card__block--about">
-        <div class="animal-card__block--name">Акина-ту</div>
-        <div class="animal-card__block--info">
-          Краткое описание питомцаКраткое описание питомцаКраткое описание
-          питомца
+        <!-- BLOCK WITH RELATIVE ADDRESS-->
+        <div class="relative-address__block">
+            <p class="relative-address">
+                <span (click)="onMain()">Главная / </span>
+                <span (click)="onAnimal()">Собаки / </span>
+                <span class="relative-address--current">{{(breedInfo.breed | slice: 0:1 | uppercase) + (breedInfo.breed | slice: 1)}}</span>
+            </p>
         </div>
 
-      </div>
-    </div>
-
-    <div class="animal-card__block">
-      <div class="animal-card__block--image scale">
-        <img class="animal-card--image scale" src="assets/img/pets/02.jpg" />
-      </div>
-      <div class="animal-card__block--about">
-        <div class="animal-card__block--name">Акина-ту</div>
-        <div class="animal-card__block--info">
-          Краткое описание питомцаКраткое описание питомцаКраткое описание
-          питомца
+        <!-- BLOCK WITH BREED NAME AND FILTERS-->
+        <div class="animal-name-filters">
+            <h1 class="animal__name__breed-page">{{(breedInfo.breed | slice: 0:1 | uppercase) + (breedInfo.breed | slice: 1)}}</h1>
+            <div class="animal-name--filters">
+                <button class="animal-card__filters__btn__nohover" *ngFor="let filter of breedInfo.filters">{{filter}}</button>
+            </div>
         </div>
 
-      </div>
-    </div>
+        <section class="animal-content">
+            <img class="animal-breed__image" src="{{breedInfo.thumbnail_url}}" height="700"/>
+            <div class="fab_button"  (click)="scrollToElement('header')" id="fabButton">
+                <button>
+                    <img src="assets/icons/icon.svg">
+                </button>
+            </div>
 
-    <div class="animal-card__block">
-      <div class="animal-card__block--image scale">
-        <img class="animal-card--image scale" src="assets/img/pets/03.jpg" />
-      </div>
-      <div class="animal-card__block--about">
-        <div class="animal-card__block--name">Акина-ту</div>
-        <div class="animal-card__block--info">
-          Краткое описание питомцаКраткое описание питомцаКраткое описание
-          питомца
+            <div class="animal-breed-text__block">
+
+                <h2 class="animal-breed--subtittle" id="shortInfo">Краткая информация</h2>
+                <table class="animal-breed__table--short-info">
+                    <tr *ngFor="let parameters of breedInfo.parameters">
+                        <td class="table--attribute">{{parameters.parameter}}</td>
+                        <td class="table--value">{{parameters.value}}</td>
+                    </tr>
+                </table>
+                <div class="navigation--breed">
+                    <h2 class="animal-breed--subtittle" id="content">Содержание:</h2>
+                    <ul class="animal-breed--navigation">
+                        <li><a (click)="scrollToElement('character')">Характер</a></li>
+                        <li><a (click)="scrollToElement('training')">Воспитание</a></li>
+                        <li><a (click)="scrollToElement('diet')">Питание</a></li>
+                        <li><a (click)="scrollToElement('care')">Уход</a></li>
+                        <li><a (click)="scrollToElement('photo')">Фотографии</a></li>
+                    </ul>
+                </div>
+
+                <h2 class="animal-breed--subtittle" id="character">Характер</h2>
+                <p class="animal-breed--about">
+                    {{breedInfo.character}}
+                </p>
+                <h2 class="animal-breed--subtittle" id="training">Воспитание</h2>
+                <p class="animal-breed--about">
+                    {{breedInfo.training}}
+                </p>
+                <h2 class="animal-breed--subtittle" id="diet">Питание</h2>
+                <p class="animal-breed--about">
+                    Австралийская борзая (кенгуровая) собака представляет собой крупную
+                    борзую, телосложение мускулистое, ростом выше английских борзых.
+                    Формат прямоугольный, собака длинная и сильная.Голова широкая, морда
+                    сужается вниз. Мощная грудная клетка, глубокая и с округлыми
+                    ребрами. Шея должна быть достаточно длинная, чтобы подобрать
+                    кролика, а также сильная, чтобы держать большую дичь. Плечи сильно
+                    отведены назад. Конечности стройные, крепкие и прямые. Тонкий,
+                    длинный и очень гибкий хвост. Движения легкие, активные, с длинным
+                    большим шагом.Глаза темные, форма миндалевидная, зрение
+                    превосходное. Австралийская борзая отлично видит добычу на дальнем
+                    расстоянии. Челюсти сильные, клыки острые, прикус может быть ровным
+                    или ножницеобразным.Шерсть австралийских борзых может быть трех
+                    видов – первый напоминает шерсть классических дирхаундов, то есть
+                    короткий, жесткий, второй вид, гладкая грубоватая шерсть как у
+                    грейхаундов и третий вид – это смесь из двух первых: короткая,
+                    гладкая, жесткая
+                </p>
+                <h2 class="animal-breed--subtittle" id="care">Уход</h2>
+                <p class="animal-breed--about">
+                    {{breedInfo.care}}
+                </p>
+                <h2 class="animal-breed--subtittle">Фотографии</h2>
+            </div>
+        </section>
+    </div>
+    <div class="animal-breed--photo-gallery" id="photo">
+        <div class="vertical-grid">
+            <div class="scale">
+                <img class="photo-gallery--element" src="assets/img/pets/mp-1.jpg"/>
+            </div>
         </div>
-
-      </div>
+        <div class="horisontal-grid">
+            <div class="scale">
+                <img class="photo-gallery--element" src="assets/img/pets/mp-2.jpg"/>
+            </div>
+            <div class="scale">
+                <img class="photo-gallery--element" src="assets/img/pets/mp-3.jpg"/>
+            </div>
+            <div class="scale">
+                <img class="photo-gallery--element" src="assets/img/pets/mp-5.jpg"/>
+            </div>
+            <div class="scale">
+                <img class="photo-gallery--element" src="assets/img/pets/mp-4.jpg"/>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+    <div class="animal__content__block">
 
-<!-- SECTION FOOTER -->
-<footer class="footer">
-  <div class="footer__up">
-    <div class="logo">
-      <img src="assets/icons/logo.svg" alt="logo" />
-      <span class="logo__text__bottom">Info-pet</span>
+        <h2 class="animal-breed--subtittle subtittle--margin">
+            ВАМ ТАКЖЕ МОЖЕТ БЫТЬ ИНТЕРЕСНО:
+        </h2>
+
+        <div class="animal-breed__grid--recomendation">
+            <div class="animal-card__block scale" *ngFor="let breedCard of randomBreeds">
+                <div class="animal-card__block--image scale">
+                    <img class="animal-card--image" src="{{breedCard.thumbnail_url}}" width="370" height="210"/>
+                </div>
+                <div class="animal-card__block--about">
+                    <div class="animal-card__block--name">{{(breedCard.breed | slice: 0:1 | uppercase) + (breedCard.breed | slice: 1)}}</div>
+                    <div class="animal-card__block--info">
+                        {{breedCard.subtitle}}
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
     </div>
-    <nav>
-      <ul class="nav__links-fff">
-        <li><a routerLink="/animal-page/cats" [queryParams]="{p: '1'}" routerLinkActive="active-link">Кошки</a></li>
-        <li><a routerLink="/animal-page/dogs" [queryParams]="{p: '1'}" routerLinkActive="active-link">Собаки</a></li>
-        <li><a routerLink="/animal-page/fish" [queryParams]="{p: '1'}" routerLinkActive="active-link">Водный мир</a></li>
-        <li><a routerLink="/animal-page/birds" [queryParams]="{p: '1'}" routerLinkActive="active-link">Птицы</a></li>
-        <li><a routerLink="/animal-page/rodents" [queryParams]="{p: '1'}" routerLinkActive="active-link">Грызуны</a></li>
-        <li><a routerLink="/animal-page/reptiles" [queryParams]="{p: '1'}" routerLinkActive="active-link">Рептилии</a></li>
-        <li><a routerLink="/animal-page/others" [queryParams]="{p: '1'}" routerLinkActive="active-link">Другие питомцы</a></li>
-      </ul>
-    </nav>
-    <button class="up"></button>
-  </div>
 
-  <div class="footer__down">
-    <ul class="footer__nav__links">
-      <li>2022-2023</li>
-      <li>
-        <a href="#">
-          ссылка на бесплатные источники иллюстраций, логотипа, картинок
-        </a>
-      </li>
-      <li><a href="#">Политика сайта</a></li>
-      <li><a href="#">Реклама на сайте</a></li>
-      <li><a href="#">Контакты</a></li>
-      <li><a href="#">Правовая информация</a></li>
-    </ul>
-  </div>
-</footer>
-<div class="fixed-action-btn">
-  <a class="btn-floating btn-large red">
-    <i class="up"></i>
-  </a>
-</div>
+
 </body>
-

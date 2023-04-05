@@ -137,6 +137,7 @@
     bottom: 55px;
     display: flex;
     opacity: 0;
+    z-index: 1000;
 }
 
 .fab_button_visible{
@@ -149,9 +150,30 @@
     border-radius: 28px;
     width: 96px;
     height: 96px;
-    background-color: rgba(0, 110, 7, 0.11);
+    background-color: #EEF4EC;
+    border-style: solid;
 }
 
+.animal__name__breed-page{
+    font-family: "Source Sans Pro";
+    font-size: 64px;
+    font-weight: 400;
+    font-style: italic;
+    padding-top: 13vh;
+    white-space: nowrap;
+}
+
+.animal-card__filters__btn__nohover{
+    padding: 6px 16px;
+    margin: 2px 4px;
+    background-color: inherit;
+    color: #006e07;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Montserrat";
+    border: 2px #006e07 solid;
+    border-radius: 8px;
+}
 
 
 /*.header {*/

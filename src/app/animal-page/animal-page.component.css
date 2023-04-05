@@ -172,6 +172,37 @@
 
 .filters{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
+.animal-title-inner{
+    flex: 1;
+}
+.animal-title{
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-end;
+}
+
+.noBreeds{
+    height: 31vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+}
+.h1-not-found{
+    margin: auto;
+}
+.other{
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+    text-align: center;
+    font-weight: normal;
+    font-family: Montserrat;
+    font-size: 18px;
+
+}
+.breedImage{
+    height: 210px
+}
