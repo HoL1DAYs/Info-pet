@@ -18,6 +18,7 @@ export class BreedPageComponent implements OnInit {
   breedCards: BreedCard[]
   randomBreeds: BreedCard[] = []
   headerObserver: IntersectionObserver
+  isActivatedMenu: boolean = false;
 
 
   ngOnInit(): void {
