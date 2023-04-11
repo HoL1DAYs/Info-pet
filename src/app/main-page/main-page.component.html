@@ -16,67 +16,76 @@
 
 <!-- SECTION ABOUT ANIMAL'S -->
 <section class="section-animals-preview">
-  <div class="animals-preview__grid">
-    <div class="animal-preview__card">
-      <h2 class="animal__card--name">О собаках</h2>
-      <span class="animal__card--subtitle"
-      >Собаки одни из наиболее популярных домашних животных. Из собак получаются прекрасные сторожа, телохранители, пастухи, сыщики. Ещё собак издревле используют в качестве поводырей
+  <div>
+    <div class="animals-preview__grid">
+      <div class="animal-preview__card">
+        <h2 class="animal__card--name">О собаках</h2>
+        <span class="animal__card--subtitle"
+        >Собаки одни из наиболее популярных домашних животных. Из собак получаются прекрасные сторожа, телохранители, пастухи, сыщики. Ещё собак издревле используют в качестве поводырей
           </span>
-      <button class="animal__card__btn--more" routerLink="/animal-page/dogs" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
+        <button class="animal__card__btn--more" routerLink="/animal-page/dogs" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
+      </div>
+      <img class="animal__card__image" src="assets/img/dog.jpg" />
     </div>
-    <img class="animal__card__image scale" src="assets/img/dog.jpg" />
-    <img class="animal__card__image scale" src="assets/img/cat.jpg" />
-    <div class="animal-preview__card">
-      <h2 class="animal__card--name">О кошках</h2>
-      <span class="animal__card--subtitle"
-      >Прекрасный вариант для любых жилищных условий. В большинстве своём кошки ласковые, игривые и неагрессивные звери, которые не требуют особого ухода и дарят владельцам массу положительных эмоций.
+    <div class="animals-preview__grid">
+      <img class="animal__card__image" src="assets/img/cat.jpg" />
+      <div class="animal-preview__card">
+        <h2 class="animal__card--name">О кошках</h2>
+        <span class="animal__card--subtitle"
+        >Прекрасный вариант для любых жилищных условий. В большинстве своём кошки ласковые, игривые и неагрессивные звери, которые не требуют особого ухода и дарят владельцам массу положительных эмоций.
           </span>
-      <button class="animal__card__btn--more" routerLink="/animal-page/cats" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
-    </div>
-
-    <div class="animal-preview__card">
-      <h2 class="animal__card--name">О водном мире</h2>
-      <span class="animal__card--subtitle"
-      >Отлично подойдёт для аллергиков и ленивым людям, так как водные животные не требуют много ухода. Наблюдая за аквариумом, человек расслабляется и избавляется от стресса. А гиперактивным детям наблюдение за рыбками помогает концентрироваться на других задачах.
+        <button class="animal__card__btn--more" routerLink="/animal-page/cats" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
+      </div>
+    </div >
+    <div class="animals-preview__grid">
+      <div class="animal-preview__card">
+        <h2 class="animal__card--name">О водном мире</h2>
+        <span class="animal__card--subtitle"
+        >Отлично подойдёт для аллергиков и ленивым людям, так как водные животные не требуют много ухода. Наблюдая за аквариумом, человек расслабляется и избавляется от стресса. А гиперактивным детям наблюдение за рыбками помогает концентрироваться на других задачах.
           </span>
-      <button class="animal__card__btn--more" routerLink="/animal-page/fish" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
+        <button class="animal__card__btn--more" routerLink="/animal-page/fish" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
+      </div>
+      <img class="animal__card__image" src="assets/img/fish.jpg" />
     </div>
-    <img class="animal__card__image" src="assets/img/fish.jpg" />
-
-    <img class="animal__card__image" src="assets/img/bird.jpg" />
-    <div class="animal-preview__card">
-      <h2 class="animal__card--name">О птицах</h2>
-      <span class="animal__card--subtitle"
-      >Завести попугая — отличная идея, ведь эти птицы как будто созданы для содержания в домашних условиях. Эти питомцы являются долгожителями. От других питомцев они отличаются сообразительностью и умением разговартваить.
+    <div class="animals-preview__grid">
+      <img class="animal__card__image" src="assets/img/bird.jpg" />
+      <div class="animal-preview__card">
+        <h2 class="animal__card--name">О птицах</h2>
+        <span class="animal__card--subtitle"
+        >Завести попугая — отличная идея, ведь эти птицы как будто созданы для содержания в домашних условиях. Эти питомцы являются долгожителями. От других питомцев они отличаются сообразительностью и умением разговартваить.
           </span>
-      <button class="animal__card__btn--more" routerLink="/animal-page/birds" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
+        <button class="animal__card__btn--more" routerLink="/animal-page/birds" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
+      </div>
     </div>
-
-    <div class="animal-preview__card">
-      <h2 class="animal__card--name">О грызунах</h2>
-      <span class="animal__card--subtitle"
-      >Домашние грызуны очень ласковые животные и большого ухода не требуют. В отличие от собак, и кошек грызунам действительно совсем немного места, чтобы жить.
+    <div class="animals-preview__grid">
+      <div class="animal-preview__card">
+        <h2 class="animal__card--name">О грызунах</h2>
+        <span class="animal__card--subtitle"
+        >Домашние грызуны очень ласковые животные и большого ухода не требуют. В отличие от собак, и кошек грызунам действительно совсем немного места, чтобы жить.
           </span>
-      <button class="animal__card__btn--more" routerLink="/animal-page/rodents" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
+        <button class="animal__card__btn--more" routerLink="/animal-page/rodents" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
+      </div>
+      <img class="animal__card__image" src="assets/img/mouse.jpg" />
     </div>
-    <img class="animal__card__image" src="assets/img/mouse.jpg" />
-
-    <img class="animal__card__image" src="assets/img/reptitle.jpg" />
-    <div class="animal-preview__card">
-      <h2 class="animal__card--name">О Рептилиях</h2>
-      <span class="animal__card--subtitle"
-      >Главная особенность этих питомцев в том, что для них не важен тактильный контакт, и чрезмерное внимание для них скорее вредно, чем полезно. Именно поэтому рептилии могут себе позволить люди, которых часто нет дома. Но это не значит, что этот питомец не сможет быть вашим другом, сможет.</span>
-      <button class="animal__card__btn--more" routerLink="/animal-page/reptiles" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
+    <div class="animals-preview__grid">
+      <img class="animal__card__image" src="assets/img/reptitle.jpg" />
+      <div class="animal-preview__card">
+        <h2 class="animal__card--name">О Рептилиях</h2>
+        <span class="animal__card--subtitle"
+        >Главная особенность этих питомцев в том, что для них не важен тактильный контакт, и чрезмерное внимание для них скорее вредно, чем полезно. Именно поэтому рептилии могут себе позволить люди, которых часто нет дома. Но это не значит, что этот питомец не сможет быть вашим другом, сможет.</span>
+        <button class="animal__card__btn--more" routerLink="/animal-page/reptiles" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
+      </div>
     </div>
-
-    <div class="animal-preview__card">
-      <h2 class="animal__card--name">О других питомцах</h2>
-      <span class="animal__card--subtitle"
-      >Если вы мечтали о необычных питомцах, тогда вы попали по адресу. Здесь вы найдете самых разнообразных животных со всего мира. Плюсы заведения домашних экзотов очевидны: вы получите не только друзей на всю жизнь, но и уникальную возможность узнать больше о живой природе.
+    <div class="animals-preview__grid">
+      <div class="animal-preview__card">
+        <h2 class="animal__card--name">О других питомцах</h2>
+        <span class="animal__card--subtitle"
+        >Если вы мечтали о необычных питомцах, тогда вы попали по адресу. Здесь вы найдете самых разнообразных животных со всего мира. Плюсы заведения домашних экзотов очевидны: вы получите не только друзей на всю жизнь, но и уникальную возможность узнать больше о живой природе.
           </span>
-      <button class="animal__card__btn--more" routerLink="/animal-page/others" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
+        <button class="animal__card__btn--more" routerLink="/animal-page/others" [queryParams]="{p: 1}" routerLinkActive="active-link">Подробнее</button>
+      </div>
+      <img class="animal__card__image" src="assets/img/other.jpg" />
     </div>
-    <img class="animal__card__image" src="assets/img/other.jpg" />
   </div>
 </section>
 

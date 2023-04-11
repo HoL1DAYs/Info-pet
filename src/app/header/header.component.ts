@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
 
   navBlack: boolean
+  isActivatedMenu: boolean = false
 
 
   constructor(private route: ActivatedRoute) {
@@ -26,6 +27,10 @@ export class HeaderComponent implements OnInit {
 
   isBlack(){
     this.navBlack = this.route.snapshot['_routerState'].url !== '/main-page';
+  }
+
+  toggleMenu(){
+    this.isActivatedMenu = !this.isActivatedMenu;
   }
 
 }

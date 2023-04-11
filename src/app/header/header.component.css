@@ -14,6 +14,17 @@
     border-bottom-width: 1px;
 }
 
+.sidebar__logo{
+    font-family: Source Sans Pro;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 16px;
+    color: #000;
+    border-bottom-style: solid;
+    border-bottom-color: #006e07;
+    border-bottom-width: 1px;
+}
+
 .logo__text__bottom {
     font-family: Source Sans Pro;
     font-weight: 600;
@@ -206,3 +217,78 @@
 .dropdown .search_bread_card:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+.burger_menu_div{
+    display: none;
+
+}
+
+.sidebar{
+    display: none;
+    position: fixed ;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100vh;
+    padding: 15px;
+    background: #FFEFBA;
+    transform: translateX(+100%);
+    transition-duration: 1s;
+}
+.sidebarNg{
+    display: block;
+    background-color: #F8F9F7;
+    transform: translateX(60%);
+    z-index: 100;
+    color: black;
+    transition: transform 1s;
+
+}
+.svg{
+    z-index: 100;
+}
+.sidebar_unordered_list li{
+    color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    font-size: 20px;
+    list-style-type: none;
+    cursor: pointer;
+}
+.sidebar_unordered_list p:hover {
+    color: #006e07;
+    text-decoration: underline;
+    white-space: normal;
+}
+.sidebar_unordered_list{
+    margin-top: 50px;
+}
+
+.sidebar__info{
+    position: fixed;
+    bottom: 75px;
+    left: 30px;
+}
+
+.burger_menu_black{
+    fill: black;
+}
+.burger_menu{
+    fill: white;
+}
+
+.sidebar_header{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 960px){
+    .dropdown{
+        right: 41px;
+    }
+    .burger_menu_div{
+        display: block;
+    }
+
+}
