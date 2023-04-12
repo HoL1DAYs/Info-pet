@@ -1,7 +1,10 @@
 import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {RequestService} from "../../request.service";
 import {BreedCard} from "../../animal-page/breedCard.model";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
+
 
 @Component({
   selector: 'app-searchline',
@@ -17,6 +20,7 @@ export class SearchlineComponent {
   @ViewChild('inputField', {static: false}) inputField: ElementRef;
 
 
+
   constructor(private reqService: RequestService, private router: Router, private route: ActivatedRoute) {
   }
 
@@ -30,7 +34,7 @@ export class SearchlineComponent {
     setTimeout(()=>{
       this.toggleDropdown = false;
       this.inputField.nativeElement.value = '';
-    }, 70)
+    }, 130)
   }
 
 

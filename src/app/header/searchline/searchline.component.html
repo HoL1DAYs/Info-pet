@@ -2,7 +2,7 @@
     <input [ngClass]="{search: !navBlack, search_black: navBlack}" placeholder="Поиск по сайту" [(ngModel)]="data" (input)="onSearch(data.toLowerCase())" (transitionstart)="disableDropdown()" #inputField />
     <button class="close-search-button" [ngClass]="{'close-search-button_visible': toggleDropdown}"><img src="assets/icons/search-close.svg" (click)="disableDropdown()"></button>
     <div class="dropdown-content" [ngClass]="{show: toggleDropdown}">
-        <div class="search_bread_card" *ngFor="let breedCard of breedCards" [routerLink]="['animal-page', 'dogs', breedCard.id]">
+        <div class="search_bread_card" *ngFor="let breedCard of breedCards" [routerLink]="['animal-page', 'dogs', breedCard.id]" >
             <div class="search_bread_card-img">
                 <img src="{{breedCard.thumbnail_url}}">
             </div>

@@ -228,7 +228,7 @@
     position: fixed ;
     top: 0;
     right: 0;
-    width: 60%;
+    width: 100%;
     height: 100vh;
     padding: 15px;
     background: #FFEFBA;
@@ -238,11 +238,10 @@
 .sidebarNg{
     display: block;
     background-color: #F8F9F7;
-    transform: translateX(60%);
+    transform: translateX(0%);
     z-index: 100;
     color: black;
     transition: transform 1s;
-
 }
 .svg{
     z-index: 100;
@@ -290,5 +289,30 @@
     .burger_menu_div{
         display: block;
     }
+    .sidebarNg{
+        transform: translateX(73%);
+    }
 
+}
+
+
+@media screen and (max-width: 700px){
+    .sidebarNg{
+        transform: translateX(65%);
+    }
+    .search_black:focus{
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 570px){
+    .sidebarNg{
+        transform: translateX(60%);
+    }
+}
+
+@media screen and (max-width: 500px){
+    .sidebarNg{
+        transform: translateX(50%);
+    }
 }

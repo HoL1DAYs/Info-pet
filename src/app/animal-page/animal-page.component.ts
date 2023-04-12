@@ -17,9 +17,6 @@ export class AnimalPageComponent implements OnInit {
   @ViewChild('breeds', {static: false}) breeds: ElementRef
   countMoreBreeds: number = 1;
 
-  constructor(private router: Router, private route: ActivatedRoute, private reqService: RequestService) { }
-
-
   number: number;
   breedCards: BreedCard[] = [];
   filterActive: boolean = false;
@@ -32,6 +29,11 @@ export class AnimalPageComponent implements OnInit {
   loaded: boolean = false;
   allShowed: boolean
 
+
+  constructor(private router: Router, private route: ActivatedRoute, private reqService: RequestService) { }
+
+
+
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
           this.number = params['p']
@@ -39,7 +41,6 @@ export class AnimalPageComponent implements OnInit {
     )
     this.reqService.fetchData(this.number-1).subscribe(responseData => {
           this.breedCards = responseData.content
-          console.log(responseData.totalPages)
           this.totalPages = +responseData.totalElements / 12
 
           this.loaded = true
@@ -56,7 +57,11 @@ export class AnimalPageComponent implements OnInit {
     })).subscribe(res => {
       this.filtersList = res
       this.visibleFilters = this.filtersList.slice(0,11)
-      console.log(res)
+      const pageWidth = document.documentElement.scrollWidth
+      console.log(pageWidth)
+      if (pageWidth < 700){
+        this.visibleFilters = this.filtersList.slice(0,6)
+      }
     })
 
 
@@ -68,6 +73,7 @@ export class AnimalPageComponent implements OnInit {
         this.loaded = true
       })
     }
+
 
 
   }
@@ -98,7 +104,6 @@ export class AnimalPageComponent implements OnInit {
     } else{
       // enabling filter
       this.filters.push(filtersFromIter)
-      console.log(this.filters)
       this.reqService.fetchData(this.number-1, 2).subscribe(responseData => {
         this.breedCards = responseData.content
         this.totalPages = +responseData.totalElements / 12
