@@ -110,7 +110,7 @@
         </h2>
 
         <div class="animal-breed__grid--recomendation">
-            <div class="animal-card__block scale" *ngFor="let breedCard of randomBreeds">
+            <div class="animal-card__block scale" *ngFor="let breedCard of randomBreeds" [routerLink]="['animal-page', 'dogs', breedCard.id]">
                 <div class="animal-card__block--image scale">
                     <img class="animal-card--image" src="{{breedCard.thumbnail_url}}" width="370" height="210"/>
                 </div>

@@ -828,6 +828,12 @@ search:focus .dropdown-content {
     display: flex;
     flex-flow: wrap;
   }
+  .section__title__block {
+    left: 15vw;
+  }
+  .search:focus {
+    width: 250px;
+  }
 }
 
 @media screen and (max-width: 950px){
