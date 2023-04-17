@@ -1,8 +1,9 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {RequestService} from "../request.service";
 import {BreedCard} from "./breedCard.model";
 import {map} from "rxjs/operators";
+import {errorObject} from "rxjs/internal-compatibility";
 
 
 
@@ -11,7 +12,7 @@ import {map} from "rxjs/operators";
   templateUrl: './animal-page.component.html',
   styleUrls: ['./animal-page.component.css']
 })
-export class AnimalPageComponent implements OnInit {
+export class AnimalPageComponent implements OnInit, OnChanges {
 
   @ViewChild('filtersArray', {static: false}) filtersArray: ElementRef
   @ViewChild('breeds', {static: false}) breeds: ElementRef
@@ -24,10 +25,12 @@ export class AnimalPageComponent implements OnInit {
   filtersPage: string[];
   toggleFilters: boolean = false;
   filtersList: string[]
-  visibleFilters: string[];
+  visibleFilters: string[] = []
   totalPages: number;
   loaded: boolean = false;
   allShowed: boolean
+  animal_id: number
+  animal: string
 
 
   constructor(private router: Router, private route: ActivatedRoute, private reqService: RequestService) { }
@@ -37,36 +40,53 @@ export class AnimalPageComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
           this.number = params['p']
+          this.animal_id = params['animal_id']
+          this.animal = this.animal_id == 1? 'Собаки' : 'Кошки';
+          this.visibleFilters = this.animal_id == 2? [] : [];
+          this.reqService.getAnimalsById(this.animal_id).pipe(map(res => {
+            const filterArray = []
+            for (let filter of res.filters){
+              filterArray.push(filter.filter)
+            }
+            if(filterArray.length ==0){
+              return null
+            }
+            return filterArray
+          })).subscribe(res => {
+            if (res == null){
+              return
+            }
+            this.filtersList = res
+            this.visibleFilters = this.filtersList.slice(0,11)
+
+            const pageWidth = document.documentElement.scrollWidth
+            console.log(pageWidth)
+            if (pageWidth < 700){
+              this.visibleFilters = this.filtersList.slice(0,6)
+            }
+          })
+
+
+          this.reqService.fetchData(this.number-1, this.animal_id).subscribe(responseData => {
+                this.breedCards = responseData.content
+                this.totalPages = +responseData.totalElements / 12
+
+                this.loaded = true
+                console.log(responseData)
+              }, error => {
+            this.router.navigate(['/error-page'])
+            console.log(error)
+              }
+          )
     }
     )
-    this.reqService.fetchData(this.number-1).subscribe(responseData => {
-          this.breedCards = responseData.content
-          this.totalPages = +responseData.totalElements / 12
 
-          this.loaded = true
-          console.log(responseData)
-        }
-    )
 
-    this.reqService.getAnimalsById(1).pipe(map(res => {
-      const filterArray = []
-      for (let filter of res.filters){
-        filterArray.push(filter.filter)
-      }
-      return filterArray
-    })).subscribe(res => {
-      this.filtersList = res
-      this.visibleFilters = this.filtersList.slice(0,11)
-      const pageWidth = document.documentElement.scrollWidth
-      console.log(pageWidth)
-      if (pageWidth < 700){
-        this.visibleFilters = this.filtersList.slice(0,6)
-      }
-    })
+
 
 
     if (this.route.snapshot.queryParams.filters){
-      this.reqService.fetchData(this.number-1).subscribe(res => {
+      this.reqService.fetchData(this.number-1, this.animal_id).subscribe(res => {
         this.breedCards = res.content;
         this.totalPages = +res.totalPages / 12
         console.log(this.totalPages)
@@ -77,8 +97,11 @@ export class AnimalPageComponent implements OnInit {
 
 
   }
-
-
+  ngOnChanges() {
+    if (this.animal_id == 2){
+      this.visibleFilters = []
+    }
+  }
 
   appendToFilters(i, filtersFromIter){
     if (this.filters.includes(filtersFromIter)){
@@ -95,7 +118,7 @@ export class AnimalPageComponent implements OnInit {
       this.filters = this.filters.filter(String)
 
       console.log(this.filters)
-      this.reqService.fetchData(this.number-1, 2).subscribe(responseData => {
+      this.reqService.fetchData(this.number-1, 1).subscribe(responseData => {
         this.breedCards = responseData.content
         this.totalPages = +responseData.totalPages / 12
         this.loaded = true
@@ -104,7 +127,7 @@ export class AnimalPageComponent implements OnInit {
     } else{
       // enabling filter
       this.filters.push(filtersFromIter)
-      this.reqService.fetchData(this.number-1, 2).subscribe(responseData => {
+      this.reqService.fetchData(this.number-1, 1).subscribe(responseData => {
         this.breedCards = responseData.content
         this.totalPages = +responseData.totalElements / 12
         this.loaded = true
@@ -120,20 +143,26 @@ export class AnimalPageComponent implements OnInit {
 
   emptyFilters(){
     this.filters = []
-    this.router.navigate(['./'],{relativeTo: this.route, queryParams: {p: this.number, filters: this.filters}})
+    this.router.navigate(['./'],{relativeTo: this.route, queryParams: {p: this.number, animal_id: this.animal_id}})
     const filtersArray = this.filtersArray.nativeElement.childNodes
     for (let k = 0; k < this.visibleFilters.length; k++) {
       filtersArray[(k)].classList.remove('btn_active')
     }
-    this.reqService.fetchData(this.number-1).subscribe(response => this.breedCards = response.content)
+    this.reqService.fetchData(this.number-1, this.animal_id).subscribe(response => this.breedCards = response.content)
   }
 
 
 
   allFilters(){
+    const pageWidth = document.documentElement.scrollWidth
+
+
     this.toggleFilters = !this.toggleFilters
     if (this.toggleFilters === false) {
       this.visibleFilters = this.filtersList.slice(0, 11)
+      if (pageWidth < 700){
+        this.visibleFilters = this.filtersList.slice(0,6)
+      }
     } else{
       this.visibleFilters = this.filtersList
     }

@@ -40,24 +40,7 @@
 }
 
 
-.nav__links {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    font-family: Montserrat, Arial, sans-serif;
-    list-style: none;
-}
 
-
-
-
-
-.nav__links a {
-    font-size: 16px;
-    color: #fff;
-    text-decoration: none;
-    transition: all 0.3s ease 0s;
-}
 
 .search {
     position: relative;
@@ -151,5 +134,12 @@
     }
     .title-about-site{
         font-size: 10px;
+        padding: 2vh 6vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .section__title__block{
+        left: 10vw;
     }
 }

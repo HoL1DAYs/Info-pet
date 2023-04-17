@@ -1,15 +1,5 @@
 
 
-.logo__text_black {
-    font-family: Source Sans Pro;
-    font-weight: 600;
-    font-style: italic;
-    font-size: 16px;
-    color: #000;
-    border-bottom-style: solid;
-    border-bottom-color: #006e07;
-    border-bottom-width: 1px;
-}
 
 .logo__text__bottom {
     font-family: Source Sans Pro;
@@ -24,9 +14,6 @@
 
 
 
-.nav__links li {
-    padding: 0 20px;
-}
 
 .nav__links_black a {
     font-size: 16px;
@@ -41,22 +28,6 @@
     color: #006e07 !important;
 }
 
-
-
-
-.search_black:focus {
-    width: 300px;
-    height: 34px;
-    cursor: text;
-    padding-left: 15px;
-    font-size: 16px;
-    outline: none;
-    border-radius: 6px;
-    border-width: 1px;
-    border-style: solid;
-    background-image: none;
-    background-size: 22px;
-}
 
 .nav__links-fff {
     padding: 0 20px;
@@ -183,16 +154,23 @@
     .animal__name__breed-page{
         font-size: 52px;
     }
+
 }
 @media screen and (max-width: 700px){
     .animal__name__breed-page{
-        padding-top: 14vh;
+        padding-top: 18vh;
         font-size: 26px;
+        white-space: normal;
+    }
+    .fab_button{
+        bottom: 25px;
+        right: 25px;
     }
     .fab_button button{
         width: 42px;
         height: 42px;
         border-radius: 16px;
+        border-width: 1px;
     }
     .fab_button_img{
         width: 28%;

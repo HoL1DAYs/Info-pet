@@ -33,14 +33,13 @@ img{
 }
 
 .close-search-button{
-    z-index: 1000;
+    z-index: 2000;
     position: absolute;
     right: 10px;
     top: 7px;
     display: none;
     background-color: white;
     border: none;
-    pointer-events: none;
 }
 .close-search-button img{
     width: 20px;
@@ -49,4 +48,5 @@ img{
 
 .close-search-button_visible{
     display: block;
+    cursor: pointer;
 }
