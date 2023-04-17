@@ -111,8 +111,17 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu(){
-    this.isActivatedMenu = !this.isActivatedMenu;
     const body = document.querySelector('body')
+    const overlay = document.querySelector('.overlay')
+    this.isActivatedMenu = !this.isActivatedMenu;
+    if (this.isActivatedMenu){
+      overlay.classList.remove('hidden')
+    }else{
+      overlay.classList.add('hidden')
+    }
+    overlay.addEventListener('click', ()=>{
+      overlay.classList.add('hidden')
+    })
     if(body.classList.contains('overflow')){
       body.classList.remove('overflow')
     }
