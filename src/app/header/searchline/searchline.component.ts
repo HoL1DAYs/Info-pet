@@ -1,9 +1,7 @@
 import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {RequestService} from "../../request.service";
 import {BreedCard} from "../../animal-page/breedCard.model";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {Subject} from "rxjs";
-import {takeUntil} from "rxjs/operators";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -28,7 +26,11 @@ export class SearchlineComponent {
   enableDropdown(){
     this.toggleDropdown = true;
   }
-
+  clearInput(){
+    setTimeout(()=>{
+      this.inputField.nativeElement.value = '';
+    }, 130)
+  }
 
   disableDropdown(){
     setTimeout(()=>{

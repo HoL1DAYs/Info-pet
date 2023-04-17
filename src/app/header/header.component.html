@@ -5,8 +5,8 @@
     </div>
     <nav class="navbar_options">
         <ul [ngClass]="{nav__links: !navBlack, nav__links__black: navBlack}">
-            <li><a routerLink="/animal-page/cats" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Кошки</a></li>
-            <li><a routerLink="/animal-page/dogs" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Собаки</a></li>
+            <li><a routerLink="/animal-page/cats" [queryParams]="{p: 1, animal_id: 2}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Кошки</a></li>
+            <li><a routerLink="/animal-page/dogs" [queryParams]="{p: 1, animal_id: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Собаки</a></li>
             <li><a routerLink="/animal-page/fish" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Водный мир</a></li>
             <li><a routerLink="/animal-page/birds" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Птицы</a></li>
             <li><a routerLink="/animal-page/rodents" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Грызуны</a></li>
@@ -16,7 +16,7 @@
     </nav>
     <app-searchline></app-searchline>
     <div class="burger_menu_div" (click)="toggleMenu()">
-        <div class="sidebar" [ngClass]="{sidebarNg: isActivatedMenu}">
+        <div class="sidebar" [ngClass]="{sidebarNg: isActivatedMenu, shadow:isActivatedMenu}">
             <div class="sidebar_header">
                 <div class="logo">
                     <img src="assets/icons/logo.svg" alt="logo" />
@@ -29,8 +29,8 @@
                 </div>
             </div>
             <ul class="sidebar_unordered_list">
-                <li><p routerLink="/animal-page/cats" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Кошки</p></li>
-                <li><p routerLink="/animal-page/dogs" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Собаки</p></li>
+                <li><p routerLink="/animal-page/cats" [queryParams]="{p: 1, animal_id: 2}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Кошки</p></li>
+                <li><p routerLink="/animal-page/dogs" [queryParams]="{p: 1, animal_id: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Собаки</p></li>
                 <li><p routerLink="/animal-page/fish" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Водный мир</p></li>
                 <li><p routerLink="/animal-page/birds" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Птицы</p></li>
                 <li><p routerLink="/animal-page/rodents" [queryParams]="{p: 1}" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: false}">Грызуны</p></li>
@@ -39,10 +39,10 @@
             </ul>
             <div class="sidebar__info">
                 <p>+7 999 032-09-11</p>
-                <p>Реклама на сайте</p>
+                <p>Реклама на сайте:<br> example@gmail.com</p>
             </div>
         </div>
-        <svg [ngClass]="{burger_menu_black: navBlack, burger_menu: !navBlack}" width="18" height="12" viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
+        <svg class="burger_menu_svg" [ngClass]="{burger_menu_black: navBlack, burger_menu: !navBlack}" width="18" height="12" viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 12V10.5H18V12H0ZM0 6.75V5.25H18V6.75H0ZM0 1.5V0H18V1.5H0Z"/>
         </svg>
     </div>

@@ -1,58 +1,58 @@
-<body>
-  <div class="animal__content__block">
 
-    <!-- SECTION WITH TITLE AND FILTERS -->
-    <section class="filters-window">
-      <div class="animal-title">
-        <div class="animal-title-inner">
-          <h1 class="animal__name">Собаки</h1>
-        </div>
-        <div class="disable__filters__button" *ngIf="filters.length !== 0">
-          <button (click)="emptyFilters()">Сбросить</button>
-        </div>
-      </div>
+<div class="animal__content__block">
 
-      <div class="filters">
-        <div class="filter__buttons" #filtersArray>
-          <button class="filter__button"  (click)="appendToFilters(i, filter)" *ngFor="let filter of visibleFilters, let i=index">{{filter}} </button>
-        </div>
+  <!-- SECTION WITH TITLE AND FILTERS -->
+  <section class="filters-window">
+    <div class="animal-title">
+      <div class="animal-title-inner">
+        <h1 class="animal__name">{{animal}}</h1>
       </div>
-      <div class="filter__block--more">
-        <span class="filter__title--more" (click)="allFilters()" *ngIf="!toggleFilters, else fold">Показать все категории</span>
-        <ng-template #fold>
-          <span class="filter__title--more" (click)="allFilters()">Свернуть все категории</span>
-        </ng-template>
+      <div class="disable__filters__button" *ngIf="filters.length !== 0">
+        <button (click)="emptyFilters()">Сбросить</button>
       </div>
-    </section>
+    </div>
 
-    <!-- SECTION WITH PET CARD -->
-    <section>
-<!--      <div *ngIf="breeds.childNodes.length==1" class="noBreeds">-->
-<!--        <h1 class="h1-not-found">{{loaded? 'Животных с такими фильтрами не найдено!' : 'Загружается...'}}</h1>-->
-<!--      </div>-->
-      <div class="section__animal-card__grid" #breeds>
-        <div class="animal-card__block" routerLink="{{breedCard.id}}" *ngFor="let breedCard of breedCards | filter: filters | slice : 0 : 12*this.countMoreBreeds">
-          <div class="animal-card__block--image scale">
-            <img id="breedImage" class="animal-card--image scale scale" src="{{breedCard.thumbnail_url}}" />
-          </div>
-          <div class="animal-card__block--about">
-            <div class="animal-card__block--name">{{(breedCard.breed | slice: 0:1 | uppercase) + (breedCard.breed | slice: 1)}}
-              <div class="arrow-1">
-                <img src="../../assets/icons/arrow.svg" />
-              </div>
-            </div>
-            <div class="animal-card__block--info">
-              {{breedCard.subtitle}}
+    <div class="filters" *ngIf="visibleFilters.length != 0">
+      <div class="filter__buttons" #filtersArray>
+        <button class="filter__button"  (click)="appendToFilters(i, filter)" *ngFor="let filter of visibleFilters, let i=index">{{filter}} </button>
+      </div>
+    </div>
+    <div class="filter__block--more">
+      <span class="filter__title--more" (click)="allFilters()" *ngIf="!toggleFilters && visibleFilters.length != 0, else fold">Показать все категории</span>
+      <ng-template #fold>
+        <span class="filter__title--more" *ngIf="visibleFilters.length != 0" (click)="allFilters()">Свернуть все категории</span>
+      </ng-template>
+    </div>
+  </section>
+
+  <!-- SECTION WITH PET CARD -->
+  <section>
+      <div *ngIf="breeds.childNodes.length==1" class="noBreeds">
+        <h1 class="h1-not-found">{{loaded? 'Животных с такими фильтрами не найдено!' : 'Загружается...'}}</h1>
+      </div>
+    <div class="section__animal-card__grid" #breeds>
+      <div class="animal-card__block" routerLink="{{breedCard.id}}" *ngFor="let breedCard of breedCards | filter: filters | slice : 0 : 12*this.countMoreBreeds">
+        <div class="animal-card__block--image scale">
+          <img id="breedImage" class="animal-card--image scale scale" src="{{breedCard.thumbnail_url}}" />
+        </div>
+        <div class="animal-card__block--about">
+          <div class="animal-card__block--name">{{(breedCard.breed | slice: 0:1 | uppercase) + (breedCard.breed | slice: 1)}}
+            <div class="arrow-1">
+              <img src="../../assets/icons/arrow.svg" />
             </div>
           </div>
+          <div class="animal-card__block--info">
+            {{breedCard.subtitle}}
+          </div>
         </div>
       </div>
-    </section>
-    <h2 class="other" *ngIf="!allShowed" (click)="showMoreBreeds()">Показать еще...</h2>
+    </div>
+  </section>
+
+  <h2 class="other" *ngIf="!allShowed && !(breeds.childNodes.length==1)" (click)="showMoreBreeds()">Показать еще...</h2>
 
 <!--    <app-pagination (breedCards)="breedCards = $event"></app-pagination>-->
 
-  </div>
+</div>
 
-</body>
 

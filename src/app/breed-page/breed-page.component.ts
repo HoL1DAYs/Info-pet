@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {RequestService} from "../request.service";
 import {BreedCard} from "../animal-page/breedCard.model";
 import {Observable} from "rxjs";
@@ -19,17 +19,37 @@ export class BreedPageComponent implements OnInit {
   headerObserver: IntersectionObserver
   isActivatedMenu: boolean = false;
   product$: Observable<any>;
+  animal: string;
+  animal_id: number
 
   constructor(private router: Router, private route: ActivatedRoute, private reqService: RequestService) {
   }
 
 
   ngOnInit(): void {
-    this.reqService.getBreedById(this.route.snapshot.params['id']).subscribe(responseData => {
-      this.breedInfo = responseData
-      console.log(responseData)
+    this.route.params.subscribe((params: Params) => {
+      if (params['id'] >= 153){
+        this.animal = 'Кошки'
+        this.animal_id = 2
+      } else{
+        this.animal_id = 1
+        this.animal = 'Собаки'
+      }
+      this.reqService.getBreedById(params['id']).subscribe(res => {
+        this.breedInfo = res
+        console.log(res)
+      })
+    },
+    error => {
+      this.router.navigate(['/error-page'])
+      console.log(error)
     })
-    this.reqService.fetchData(0).subscribe(res => {
+
+
+
+
+
+    this.reqService.fetchData(0, 1).subscribe(res => {
       this.breedCards = res.content
       console.log(res)
       console.log(this.randomBreeds)
@@ -39,7 +59,7 @@ export class BreedPageComponent implements OnInit {
       this.randomBreeds.unshift(this.breedCards[Math.floor(Math.random() * this.breedCards.length)])
     })
 
-    const htmlHeight = document.documentElement.scrollHeight + 100
+    const htmlHeight = document.documentElement.scrollHeight + 10000
     console.log(htmlHeight)
     // @ts-ignore
     this.headerObserver = new IntersectionObserver(this.stickyFAB, {
@@ -59,11 +79,11 @@ export class BreedPageComponent implements OnInit {
 
 
   onAnimal() {
-    this.router.navigate(['..'], {relativeTo: this.route, queryParams: {p: 1}})
+    this.router.navigate(['..'], {relativeTo: this.route, queryParams: {p: 1, animal_id: this.animal_id}})
   }
 
   onMain() {
-    this.router.navigate(['main-page'])
+    this.router.navigate(['/main-page'])
   }
 
 

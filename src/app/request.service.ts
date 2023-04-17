@@ -15,8 +15,8 @@ export class RequestService{
         return this.http.get<any>(`//localhost:8080/api/v1/breeds/${id}?size=12`)
     }
 
-    fetchData(pageNumber?, animal_id?, filter?){
-        return this.http.get<ResponseDataModel>(`//localhost:8080/api/v1/1/breeds?size=156&page=${pageNumber}`)
+    fetchData(pageNumber?, animal_id?: number, filter?){
+        return this.http.get<ResponseDataModel>(`//localhost:8080/api/v1/${animal_id}/breeds?size=156&page=${pageNumber}`)
     }
 
     getByQuery(query){

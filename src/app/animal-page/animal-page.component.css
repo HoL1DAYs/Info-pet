@@ -37,27 +37,6 @@
     border-bottom-width: 1px;
 }
 
-.nav__links {
-    padding: 0 20px;
-    display: flex;
-    font-family: Montserrat, Arial, sans-serif;
-    list-style: none;
-}
-
-.nav__links li {
-    padding: 0 20px;
-}
-
-.nav__links a {
-    font-size: 16px;
-    color: #000;
-    text-decoration: none;
-    transition: all 0.3s ease 0s;
-}
-
-.nav__links a:hover {
-    text-decoration: underline;
-}
 
 .active-link {
     text-decoration: underline !important;
@@ -201,6 +180,7 @@
     font-weight: normal;
     font-family: Montserrat;
     font-size: 18px;
+    cursor: pointer;
 
 }
 .breedImage{

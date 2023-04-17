@@ -1,4 +1,4 @@
-<body  [ngClass]="{ blur: isActivatedMenu}">
+<body>
     <div class="animal__content__block" id="header">
         <!-- HEADER WITH NAVIGATION-->
 
@@ -6,7 +6,7 @@
         <div class="relative-address__block">
             <p class="relative-address">
                 <span (click)="onMain()">Главная / </span>
-                <span (click)="onAnimal()">Собаки / </span>
+                <span (click)="onAnimal()">{{animal}} / </span>
                 <span class="relative-address--current">{{(breedInfo.breed | slice: 0:1 | uppercase) + (breedInfo.breed | slice: 1)}}</span>
             </p>
         </div>
@@ -110,16 +110,19 @@
         </h2>
 
         <div class="animal-breed__grid--recomendation">
-            <div class="animal-card__block scale" *ngFor="let breedCard of randomBreeds" [routerLink]="['animal-page', 'dogs', breedCard.id]">
+            <div class="animal-card__block scale" *ngFor="let breedCard of randomBreeds" [routerLink]="['/animal-page', 'dogs', breedCard.id]">
                 <div class="animal-card__block--image scale">
                     <img class="animal-card--image" src="{{breedCard.thumbnail_url}}" width="370" height="210"/>
                 </div>
                 <div class="animal-card__block--about">
-                    <div class="animal-card__block--name">{{(breedCard.breed | slice: 0:1 | uppercase) + (breedCard.breed | slice: 1)}}</div>
+                    <div class="animal-card__block--name">{{(breedCard.breed | slice: 0:1 | uppercase) + (breedCard.breed | slice: 1)}}
+                        <div class="arrow-1">
+                            <img src="../../assets/icons/arrow.svg" />
+                        </div>
+                    </div>
                     <div class="animal-card__block--info">
                         {{breedCard.subtitle}}
                     </div>
-
                 </div>
             </div>
 
