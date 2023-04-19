@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 services:
   postgres:
@@ -18,15 +18,21 @@ services:
       - '8080:8080'
     depends_on:
       - postgres
+  angular_app:
+    image: holiday223/angular-app:0.0.1
+    ports:
+      - '443:80'
+    depends_on:
+      - app
 
   python_script:
-    build: ./script
+    image: holiday223/python_script:0.0.1
     container_name: 'infopet-script'
     depends_on:
       - postgres
 
   python_script2:
-    build: ./script2
+    image: holiday223/python_script2:0.0.1
     container_name: 'infopet-script2'
     depends_on:
       - postgres

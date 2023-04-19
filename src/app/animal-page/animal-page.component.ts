@@ -4,6 +4,7 @@ import {RequestService} from "../request.service";
 import {BreedCard} from "./breedCard.model";
 import {map} from "rxjs/operators";
 import {errorObject} from "rxjs/internal-compatibility";
+import {Title} from "@angular/platform-browser";
 
 
 
@@ -33,7 +34,7 @@ export class AnimalPageComponent implements OnInit, OnChanges {
   animal: string
 
 
-  constructor(private router: Router, private route: ActivatedRoute, private reqService: RequestService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private reqService: RequestService, private titleService: Title) { }
 
 
 
@@ -43,6 +44,7 @@ export class AnimalPageComponent implements OnInit, OnChanges {
           this.animal_id = params['animal_id']
           this.animal = this.animal_id == 1? 'Собаки' : 'Кошки';
           this.visibleFilters = this.animal_id == 2? [] : [];
+          this.setTitle()
           this.reqService.getAnimalsById(this.animal_id).pipe(map(res => {
             const filterArray = []
             for (let filter of res.filters){
@@ -101,6 +103,10 @@ export class AnimalPageComponent implements OnInit, OnChanges {
     if (this.animal_id == 2){
       this.visibleFilters = []
     }
+  }
+
+  setTitle(){
+    this.titleService.setTitle(this.animal)
   }
 
   appendToFilters(i, filtersFromIter){
