@@ -36,8 +36,6 @@
     line-height: 82px;
     letter-spacing: -0.005em;
     text-align: left;
-
-
 }
 p{
     margin-top: 16px;
@@ -63,6 +61,7 @@ button {
     border-radius: 100px;
     padding: 10px 24px 10px 24px;
     border: none;
+    cursor: pointer;
 }
 .not-found{
     color: rgba(186, 26, 26, 1)

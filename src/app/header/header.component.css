@@ -129,6 +129,7 @@
     border-style: solid;
     background-image: none;
     background-size: 22px;
+    background-color: white;
 }
 
 .search_black:focus .dropdown-content{
@@ -346,8 +347,9 @@
 .background_white{
     background-color: white;
 }
-.background_oceanblue{
-    background-color: #EEF4EC;
+
+.background_none{
+    background-color: rgba(0,0,0,0);
 }
 @media screen and (max-width: 960px){
     .dropdown{

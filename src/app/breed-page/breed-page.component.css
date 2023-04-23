@@ -123,6 +123,7 @@
     height: 96px;
     background-color: #EEF4EC;
     border-style: solid;
+    cursor: pointer;
 }
 
 .animal__name__breed-page{

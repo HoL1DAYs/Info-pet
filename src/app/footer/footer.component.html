@@ -6,8 +6,8 @@
         </div>
         <nav>
             <ul class="nav__links">
-                <li><a routerLink="/animal-page/cats" [queryParams]="{p: '1'}">Кошки</a></li>
-                <li><a routerLink="/animal-page/dogs" [queryParams]="{p: '1'}">Собаки</a></li>
+                <li><a routerLink="/animal-page/cats" [queryParams]="{p: '1', animal_id: '2'}">Кошки</a></li>
+                <li><a routerLink="/animal-page/dogs" [queryParams]="{p: '1', animal_id: '1'}">Собаки</a></li>
                 <li><a routerLink="/animal-page/fish" [queryParams]="{p: '1'}">Водный мир</a></li>
                 <li><a routerLink="/animal-page/birds" [queryParams]="{p: '1'}">Птицы</a></li>
                 <li><a routerLink="/animal-page/rodents" [queryParams]="{p: '1'}">Грызуны</a></li>
@@ -21,8 +21,12 @@
     <div class="footer__down">
         <ul class="footer__nav__links">
             <li>2023</li>
-            <li><a href="#">+7 921-995-08-42</a></li>
-            <li><a href="#">Реклама на сайте: example@gmail.com</a></li>
+            <li>
+                <ul>Реклама на сайте:
+                    <li>example@gmail.com</li>
+                    <li>+7 921-995-08-42</li>
+                </ul>
+            </li>
         </ul>
     </div>
 </footer>

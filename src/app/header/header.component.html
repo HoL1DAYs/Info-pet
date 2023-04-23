@@ -1,7 +1,7 @@
 <header class="header">
-    <div class="logo">
+    <div class="logo" routerLink="/main-page">
         <img src="assets/icons/logo.svg" alt="logo" />
-        <span [ngClass]="{logo__text: !navBlack, logo__text_black: navBlack}" routerLink="/main-page" routerLinkActive="white-header white-logo logo__text">Info-pet</span>
+        <span [ngClass]="{logo__text: !navBlack, logo__text_black: navBlack}"  routerLinkActive="white-header white-logo logo__text">Info-pet</span>
     </div>
     <nav class="navbar_options">
         <ul [ngClass]="{nav__links: !navBlack, nav__links__black: navBlack}">

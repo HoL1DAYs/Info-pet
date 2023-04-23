@@ -4,6 +4,7 @@ import {RequestService} from "../request.service";
 import {BreedCard} from "../animal-page/breedCard.model";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {Title} from "@angular/platform-browser";
 
 
 @Component({
@@ -22,7 +23,7 @@ export class BreedPageComponent implements OnInit {
   animal: string;
   animal_id: number
 
-  constructor(private router: Router, private route: ActivatedRoute, private reqService: RequestService) {
+  constructor(private router: Router, private route: ActivatedRoute, private reqService: RequestService, private titleService: Title) {
   }
 
 
@@ -37,6 +38,7 @@ export class BreedPageComponent implements OnInit {
       }
       this.reqService.getBreedById(params['id']).subscribe(res => {
         this.breedInfo = res
+        this.setTitle(this.breedInfo.breed)
         console.log(res)
       })
     },
@@ -49,7 +51,7 @@ export class BreedPageComponent implements OnInit {
 
 
 
-    this.reqService.fetchData(0, 1).subscribe(res => {
+    this.reqService.fetchData(0, this.animal_id).subscribe(res => {
       this.breedCards = res.content
       console.log(res)
       console.log(this.randomBreeds)
@@ -75,9 +77,12 @@ export class BreedPageComponent implements OnInit {
         map(params => params.id),
         map(params => this.router.navigate(['animal-page', 'dogs', ]))
     );
+
   }
 
-
+  setTitle(title){
+    this.titleService.setTitle(title[0].toUpperCase() + title.slice(1))
+  }
   onAnimal() {
     this.router.navigate(['..'], {relativeTo: this.route, queryParams: {p: 1, animal_id: this.animal_id}})
   }
