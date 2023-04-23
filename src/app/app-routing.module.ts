@@ -10,7 +10,7 @@ const appRoutes: Routes = [
     {path: 'main-page', component: MainPageComponent },
     {path: 'animal-page/:animal', component: AnimalPageComponent},
     {path: 'animal-page/:animal/:id', component: BreedPageComponent},
-    {path: '*', redirectTo: 'error-page'},
+    {path: ':*', redirectTo: 'error-page', pathMatch:'full'},
     {path: 'error-page', component: ErrorPageComponent}
 
 ];

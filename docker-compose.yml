@@ -18,12 +18,12 @@ services:
       - '8080:8080'
     depends_on:
       - postgres
-  angular_app:
-    image: holiday223/angular-app:0.0.1
-    ports:
-      - '443:80'
-    depends_on:
-      - app
+#  angular_app:
+#    image: holiday223/angular-app:0.0.1
+#    ports:
+#      - '443:80'
+#    depends_on:
+#      - app
 
   python_script:
     image: holiday223/python_script:0.0.1

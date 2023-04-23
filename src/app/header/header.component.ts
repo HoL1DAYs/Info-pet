@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   isActivatedMenu: boolean = false
 
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(){
@@ -25,12 +25,20 @@ export class HeaderComponent implements OnInit {
 
   headerOnScroll(){
     let lastScroll = 0;
-    const defaultOffset = 150;
+    const defaultOffset = 0;
     const header = document.querySelector('.header');
     const navbar = document.querySelector('.navbar_options ul')
     const span = document.querySelector('.logo span')
     const burgerMenu = document.querySelector('.burger_menu_svg')
     const searchline = document.querySelector('input')
+    this.router.events.subscribe((event)=> {
+      console.log(header)
+      console.log(header.classList)
+      header.classList.replace('backgroud_white', 'background_none')
+      header.classList.remove('background_white')
+      console.log(event)
+    })
+
 
 
 
@@ -38,13 +46,13 @@ export class HeaderComponent implements OnInit {
     const containHide = () => header.classList.contains('hide');
 
     window.addEventListener('scroll', () => {
-      if(scrollPosition() > lastScroll && !containHide() && scrollPosition() > defaultOffset) {
+      if(scrollPosition() > lastScroll && !containHide() && scrollPosition() > defaultOffset && this.route.snapshot['_routerState'].url !== '/error-page') {
         //scroll down
         header.classList.add('hide');
 
 
       }
-      else if(scrollPosition() < lastScroll && containHide()){
+      else if(scrollPosition() < lastScroll && containHide() && this.route.snapshot['_routerState'].url !== '/error-page'){
         //scroll up
         header.classList.add('background_white');
         header.classList.remove('hide');
@@ -56,7 +64,7 @@ export class HeaderComponent implements OnInit {
         burgerMenu.classList.add('burger_menu_black')
         searchline.classList.add('search_black')
       }
-      else if(scrollPosition()< 60){
+      else if(scrollPosition()< 50 && this.route.snapshot['_routerState'].url !== '/error-page'){
         if(!this.navBlack){
           navbar.classList.remove('nav__links__black')
           burgerMenu.classList.remove('burger_menu_black')
@@ -76,8 +84,9 @@ export class HeaderComponent implements OnInit {
           navbar.classList.remove('nav__links')
           burgerMenu.classList.remove('burger_menu')
         }
-        header.classList.remove('background_white')
 
+
+        header.classList.remove('background_white')
       }
 
       lastScroll = scrollPosition();

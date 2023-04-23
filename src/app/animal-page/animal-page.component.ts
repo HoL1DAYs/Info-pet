@@ -3,7 +3,6 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {RequestService} from "../request.service";
 import {BreedCard} from "./breedCard.model";
 import {map} from "rxjs/operators";
-import {errorObject} from "rxjs/internal-compatibility";
 import {Title} from "@angular/platform-browser";
 
 
@@ -19,7 +18,7 @@ export class AnimalPageComponent implements OnInit, OnChanges {
   @ViewChild('breeds', {static: false}) breeds: ElementRef
   countMoreBreeds: number = 1;
 
-  number: number;
+  pageNumber: number;
   breedCards: BreedCard[] = [];
   filterActive: boolean = false;
   filters: string[] = [];
@@ -40,7 +39,7 @@ export class AnimalPageComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
-          this.number = params['p']
+          this.pageNumber = params['p']
           this.animal_id = params['animal_id']
           this.animal = this.animal_id == 1? 'Собаки' : 'Кошки';
           this.visibleFilters = this.animal_id == 2? [] : [];
@@ -69,7 +68,7 @@ export class AnimalPageComponent implements OnInit, OnChanges {
           })
 
 
-          this.reqService.fetchData(this.number-1, this.animal_id).subscribe(responseData => {
+          this.reqService.fetchData(this.pageNumber-1, this.animal_id).subscribe(responseData => {
                 this.breedCards = responseData.content
                 this.totalPages = +responseData.totalElements / 12
 
@@ -88,7 +87,7 @@ export class AnimalPageComponent implements OnInit, OnChanges {
 
 
     if (this.route.snapshot.queryParams.filters){
-      this.reqService.fetchData(this.number-1, this.animal_id).subscribe(res => {
+      this.reqService.fetchData(this.pageNumber-1, this.animal_id).subscribe(res => {
         this.breedCards = res.content;
         this.totalPages = +res.totalPages / 12
         console.log(this.totalPages)
@@ -124,7 +123,7 @@ export class AnimalPageComponent implements OnInit, OnChanges {
       this.filters = this.filters.filter(String)
 
       console.log(this.filters)
-      this.reqService.fetchData(this.number-1, 1).subscribe(responseData => {
+      this.reqService.fetchData(this.pageNumber-1, 1).subscribe(responseData => {
         this.breedCards = responseData.content
         this.totalPages = +responseData.totalPages / 12
         this.loaded = true
@@ -133,7 +132,7 @@ export class AnimalPageComponent implements OnInit, OnChanges {
     } else{
       // enabling filter
       this.filters.push(filtersFromIter)
-      this.reqService.fetchData(this.number-1, 1).subscribe(responseData => {
+      this.reqService.fetchData(this.pageNumber-1, 1).subscribe(responseData => {
         this.breedCards = responseData.content
         this.totalPages = +responseData.totalElements / 12
         this.loaded = true
@@ -149,12 +148,12 @@ export class AnimalPageComponent implements OnInit, OnChanges {
 
   emptyFilters(){
     this.filters = []
-    this.router.navigate(['./'],{relativeTo: this.route, queryParams: {p: this.number, animal_id: this.animal_id}})
+    this.router.navigate(['./'],{relativeTo: this.route, queryParams: {p: this.pageNumber, animal_id: this.animal_id}})
     const filtersArray = this.filtersArray.nativeElement.childNodes
     for (let k = 0; k < this.visibleFilters.length; k++) {
       filtersArray[(k)].classList.remove('btn_active')
     }
-    this.reqService.fetchData(this.number-1, this.animal_id).subscribe(response => this.breedCards = response.content)
+    this.reqService.fetchData(this.pageNumber-1, this.animal_id).subscribe(response => this.breedCards = response.content)
   }
 
 
@@ -179,8 +178,12 @@ export class AnimalPageComponent implements OnInit, OnChanges {
       this.allShowed = true;
       return
     }
-
     this.countMoreBreeds += 1
+    this.reqService.fetchData(this.pageNumber - 2 + this.countMoreBreeds, this.animal_id).subscribe((res) => {
+      for (let i=0; i<=res.content.length; i++){
+        this.breedCards.push(res.content[i])
+      }
+    })
 
   }
 

@@ -532,6 +532,7 @@ search:focus .dropdown-content {
   font-size: 14px;
   font-weight: 400;
   font-family: "Montserrat";
+  cursor: pointer;
 }
 
 .relative-address--current {
