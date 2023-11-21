@@ -101,6 +101,16 @@
     color: #006e07;
 }
 
+@media screen and (max-width: 1650px){
+    .title__header-up{
+        font-size: 80px;
+        line-height: 92px;
+    }
+    .title-header-down{
+        font-size: 20px;
+        line-height: 26px;
+    }
+}
 
 @media screen and (max-width: 1440px) {
     .title__header-up{
@@ -141,5 +151,20 @@
 @media screen and (max-width: 800px) {
     .section__title__block{
         left: 10vw;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .title__header-up{
+        font-size: 20px;
+        line-height: 26px;
+    }
+    .title-header-down{
+        font-size: 9px;
+        line-height: 13px;
+    }
+    .title-about-site{
+        font-size: 8px;
+        padding: 2vh 6vw;
     }
 }
