@@ -3,6 +3,7 @@ version: '2'
 services:
   postgres:
     image: 'postgres:15.1-alpine'
+    restart: always
     container_name: 'infopet-postgres'
     environment:
       - 'POSTGRES_USER=postgres'
@@ -14,16 +15,20 @@ services:
 
   app:
     image: lesn0y/info-pet-backend:0.0.1
-    ports:
-      - '8080:8080'
+    expose:
+      - "8080"
     depends_on:
       - postgres
-#  angular_app:
-#    image: holiday223/angular-app:0.0.1
-#    ports:
-#      - '443:80'
-#    depends_on:
-#      - app
+
+  angular_app:
+    image: holiday223/angular-app:0.0.1
+    ports:
+      - '4200:4200'
+    volumes:
+      - ./info-pet.ru.crt:/etc/ssl/info-pet.ru.crt:ro
+      - ./info-pet.ru.key:/etc/ssl/info-pet.ru.key:ro
+    depends_on:
+      - app
 
   python_script:
     image: holiday223/python_script:0.0.1

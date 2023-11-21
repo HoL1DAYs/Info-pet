@@ -32,11 +32,8 @@ export class HeaderComponent implements OnInit {
     const burgerMenu = document.querySelector('.burger_menu_svg')
     const searchline = document.querySelector('input')
     this.router.events.subscribe((event)=> {
-      console.log(header)
-      console.log(header.classList)
       header.classList.replace('backgroud_white', 'background_none')
       header.classList.remove('background_white')
-      console.log(event)
     })
 
 

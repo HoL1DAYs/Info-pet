@@ -164,7 +164,7 @@
 }
 
 .noBreeds{
-    height: 31vh;
+    height: 10vh;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -172,6 +172,8 @@
 }
 .h1-not-found{
     margin: auto;
+    font-size: 30px;
+    font-weight: bold;
 }
 .other{
     margin-top: 2vh;
