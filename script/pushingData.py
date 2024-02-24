@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup as bs
 import time
 import random
-import sqlalchemy
 import psycopg2
 import lxml
 from sqlalchemy import text
@@ -13,8 +12,16 @@ def get_data(url):
         'Accept': '*/*',
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
     }
-    engine = sqlalchemy.create_engine('postgresql+psycopg2://postgres@postgres:5432/postgres', echo=True)
-    connection = engine.connect()
+
+    connection = psycopg2.connect(
+        user='postgres',
+        password='root',
+        host='localhost',
+        port='5432',
+        database='postgres'
+    )
+
+
     trans = connection.begin()
     if 'https://lapkins.ru/cat/' == url:
         animal_name = 'Кошки'
@@ -52,14 +59,12 @@ def get_data(url):
             care = soup.find('h2', id='gl5').findNext().text + soup.find('h2', id='gl5').findNext().findNext('p').text + soup.find('h2', id='gl5').findNext().findNext('p').findNext('p').text
             if 'cat' == url.split('/')[3]:
                 push = f"insert into infopet.breeds(animal_id ,breed_name, img_url, subtitle, character, training, care) values('2' ,'{breedName}', '{imgUrl}', '{description}', '{character}', '{training}', '{care}')"
-                print('peeeeee')
                 statement = text(push)
                 connection.execute(statement)
                 connection.commit()
                 print('ended')
             elif 'dog' == url.split('/')[3]:
                 push = f"insert into infopet.breeds(animal_id ,breed_name, img_url, subtitle, character, training, care) values('1' ,'{breedName}', '{imgUrl}', '{description}', '{character}', '{training}', '{care}')"
-                print('huuuuuuuuui!!!!!!!!!')
                 statement = text(push)
                 connection.execute(statement)
                 connection.commit()

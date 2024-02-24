@@ -36,9 +36,6 @@ export class HeaderComponent implements OnInit {
       header.classList.remove('background_white')
     })
 
-
-
-
     const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
     const containHide = () => header.classList.contains('hide');
 
@@ -46,8 +43,6 @@ export class HeaderComponent implements OnInit {
       if(scrollPosition() > lastScroll && !containHide() && scrollPosition() > defaultOffset && this.route.snapshot['_routerState'].url !== '/error-page') {
         //scroll down
         header.classList.add('hide');
-
-
       }
       else if(scrollPosition() < lastScroll && containHide() && this.route.snapshot['_routerState'].url !== '/error-page'){
         //scroll up
@@ -85,7 +80,6 @@ export class HeaderComponent implements OnInit {
 
         header.classList.remove('background_white')
       }
-
       lastScroll = scrollPosition();
     })
   }

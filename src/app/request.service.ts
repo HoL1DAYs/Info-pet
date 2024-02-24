@@ -12,20 +12,20 @@ export class RequestService{
     }
 
     getBreedById(id?: number, size?: number, filters?: []){
-        return this.http.get<any>(`https://localhost:4200/api/v1/breeds/${id}?size=12`)
+        return this.http.get<any>(`http://localhost:8080/api/v1/breeds/${id}?size=12`)
     }
 
     fetchData(pageNumber?, animal_id?: number, filter?){
-        return this.http.get<ResponseDataModel>(`https://localhost:4200/api/v1/${animal_id}/breeds?page=${pageNumber}&size=12`)
+        return this.http.get<ResponseDataModel>(`http://localhost:8080/api/v1/${animal_id}/breeds?page=${pageNumber}&size=12`)
     }
 
     getByQuery(query){
-        return this.http.get<any>(`https://localhost:4200/api/v1/breeds?q=${query}`)
+        return this.http.get<any>(`http://localhost:8080/api/v1/breeds?q=${query}`)
     }
 
 
     getAnimalsById(id){
-        return this.http.get<any>(`https://localhost:4200/api/v1/animal/${id}`)
+        return this.http.get<any>(`http://localhost:8080/api/v1/animal/${id}`)
     }
 
 }

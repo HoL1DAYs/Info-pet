@@ -4,6 +4,7 @@ import time
 import random
 import sqlalchemy
 import psycopg2
+
 import lxml
 from sqlalchemy import text
 
@@ -14,8 +15,16 @@ def get_data(url):
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
     }
 
-    engine = sqlalchemy.create_engine('postgresql+psycopg2://postgres@postgres:5432/postgres', pool_pre_ping=True)
-    connection = engine.connect()
+
+        # Replace these values with your PostgreSQL connection details
+    connection = psycopg2.connect(
+        user='postgres',
+        password='root',
+        host='localhost',
+        port='5432',
+        database='postgres'
+    )
+
     trans = connection.begin()
 
     # REQUESTING AND CREATING HTML FILES_______________________

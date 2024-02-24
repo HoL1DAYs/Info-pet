@@ -83,9 +83,6 @@ export class AnimalPageComponent implements OnInit, OnChanges {
     )
 
 
-
-
-
     if (this.route.snapshot.queryParams.filters){
       this.reqService.fetchData(this.pageNumber-1, this.animal_id).subscribe(res => {
         this.breedCards = res.content;

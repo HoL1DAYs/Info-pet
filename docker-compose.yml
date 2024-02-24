@@ -7,14 +7,17 @@ services:
     container_name: 'infopet-postgres'
     environment:
       - 'POSTGRES_USER=postgres'
-      - 'POSTGRES_HOST_AUTH_METHOD=trust'
+      - 'POSTGRES_PASSWORD=root'
       - 'POSTGRES_DB=postgres'
     volumes:
       - "db-data:/var/lib/postgresql/data"
       - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
-
+    expose:
+      - '5432'
+    ports:
+      - '5432:5432'
   app:
-    image: lesn0y/info-pet-backend:0.0.1
+    image: holiday223/info-pet-backend:0.0.1
     expose:
       - "8080"
     depends_on:
@@ -27,8 +30,7 @@ services:
     volumes:
       - ./info-pet.ru.crt:/etc/ssl/info-pet.ru.crt:ro
       - ./info-pet.ru.key:/etc/ssl/info-pet.ru.key:ro
-    depends_on:
-      - app
+
 
   python_script:
     image: holiday223/python_script:0.0.1
@@ -36,11 +38,11 @@ services:
     depends_on:
       - postgres
 
-  python_script2:
-    image: holiday223/python_script2:0.0.1
-    container_name: 'infopet-script2'
-    depends_on:
-      - postgres
+#  python_script2:
+#    image: holiday223/python_script2:0.0.1
+#    container_name: 'infopet-script2'
+#    depends_on:
+#      - postgres
 
 
 volumes:
